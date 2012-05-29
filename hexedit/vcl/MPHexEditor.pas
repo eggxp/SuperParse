@@ -55,7 +55,7 @@
 
   - Heybirder for reporting that delphi 6 has not TStringList.ValueFromIndex property<br><br>
 
-  - Magnus Flysj?for his Delphi2006 package and the updated MPDELVER.INC file<br><br>
+  - Magnus Flysjö for his Delphi2006 package and the updated MPDELVER.INC file<br><br>
   
 
   <h3>history:</h3>
@@ -551,7 +551,7 @@ type
      - FoundPos: result, set to -1 if data was not found
   *)
   TMPHFindEvent = procedure(Sender: TObject;
-    const Pattern: PAnsiChar; const PatLength: integer;
+    const Pattern: PChar; const PatLength: integer;
     const SearchFrom, SearchUntil: integer;
     const IgnoreCase: boolean;
     const Wildcard: Char;
@@ -909,10 +909,10 @@ type
     // is the caret in the char field ?
     function GetInCharField: boolean;
     // insert a buffer (internal)
-    procedure InternalInsertBuffer(Buffer: PAnsiChar; const Size, Position:
+    procedure InternalInsertBuffer(Buffer: PChar; const Size, Position:
       integer);
     // append some data (int)
-    procedure InternalAppendBuffer(Buffer: PAnsiChar; const Size: integer);
+    procedure InternalAppendBuffer(Buffer: PChar; const Size: integer);
     // store the caret properties
     procedure InternalGetCurSel(var StartPos, EndPos, ACol, ARow: integer);
     // delete data
@@ -1471,7 +1471,7 @@ type
        - SearchText: if True, the current @link(Translation) is taken into account when searching textual data<br><br>
        NOTE: call @link(PrepareFindReplaceData) before the first Find call
     *)
-    function Find(aBuffer: PAnsiChar; aCount: integer; const aStart, aEnd: integer;
+    function Find(aBuffer: PChar; aCount: integer; const aStart, aEnd: integer;
       const IgnoreCase: boolean): integer;
     (* searches for text or data in the data buffer using a wildcard character
        returns the find position (-1, if data have not been found):<br><br>
@@ -1484,7 +1484,7 @@ type
        - Wildcard: this character is a placeholder for any character<br><br>
        NOTE: call @link(PrepareFindReplaceData) before the first FindWithWildcard call
     *)
-    function FindWithWildcard(aBuffer: PAnsiChar; aCount: integer; const aStart,
+    function FindWithWildcard(aBuffer: PChar; aCount: integer; const aStart,
       aEnd: integer;
       const IgnoreCase: boolean; const Wildcard: char): integer;
     (* convert a buffer for @link(Find)/@link(FindWithWildcard)/replace operation depending on
@@ -1525,18 +1525,18 @@ type
     (* returns a buffer containing parts of the data buffer's contents. the buffer is allocated
        in this routine and must be freed by the caller
     *)
-    function BufferFromFile(const aPos: integer; var aCount: integer): PAnsiChar;
+    function BufferFromFile(const aPos: integer; var aCount: integer): PChar;
     // insert some data at the specified position into the data buffer
-    procedure InsertBuffer(aBuffer: PAnsiChar; const aSize, aPos: integer; const
+    procedure InsertBuffer(aBuffer: PChar; const aSize, aPos: integer; const
       UndoDesc: string = ''; const MoveCursor: Boolean = True);
     // append some data at the end of the data buffer
-    procedure AppendBuffer(aBuffer: PAnsiChar; const aSize: integer; const UndoDesc:
+    procedure AppendBuffer(aBuffer: PChar; const aSize: integer; const UndoDesc:
       string = ''; const MoveCursor: Boolean = True);
     // replace the currently selected data with some other data
-    procedure ReplaceSelection(aBuffer: PAnsiChar; aSize: integer; const UndoDesc:
+    procedure ReplaceSelection(aBuffer: PChar; aSize: integer; const UndoDesc:
       string = ''; const MoveCursor: Boolean = True);
     // replace some amount of data
-    function Replace(aBuffer: PAnsiChar; aPosition, aOldCount, aNewCount: integer;
+    function Replace(aBuffer: PChar; aPosition, aOldCount, aNewCount: integer;
       const UndoDesc:
       string = ''; const MoveCursor: Boolean = False): integer;
     // get the current data position (depending on the cursor/caret)
@@ -1938,14 +1938,14 @@ const
 (* translate a hexadecimal data representation ("a000 cc45 d3 42"...) to binary data
  (see @link(SwapNibbles) for the meaning of the SwapNibbles value)
 *)
-function ConvertHexToBin(aFrom, aTo: PAnsiChar; const aCount: integer; const
-  SwapNibbles: boolean; var BytesTranslated: integer): PAnsiChar;
+function ConvertHexToBin(aFrom, aTo: PChar; const aCount: integer; const
+  SwapNibbles: boolean; var BytesTranslated: integer): PChar;
 
 (* translate binary data to its hex representation (see @link(ConvertHexToBin)),
    (see @link(SwapNibbles) for the meaning of the SwapNibbles value)
 *)
-function ConvertBinToHex(aFrom, aTo: PAnsiChar; const aCount: integer; const
-  SwapNibbles: boolean): PAnsiChar;
+function ConvertBinToHex(aFrom, aTo: PChar; const aCount: integer; const
+  SwapNibbles: boolean): PChar;
 
 // convert X and Y into a TGridCoord record
 function GridCoord(aX, aY: longint): TGridCoord;
@@ -2030,10 +2030,10 @@ function FadeToGray(aColor: TColor): TColor;
   - aCount: number of bytes to translate
 *)
 procedure TranslateBufferFromAnsi(const TType: TMPHTranslationKind; aBuffer,
-  bBuffer: PAnsiChar; const aCount: integer);
+  bBuffer: PChar; const aCount: integer);
 // translate data from a different character set to Ansi (see also @link(TranslateBufferFromAnsi))
 procedure TranslateBufferToAnsi(const TType: TMPHTranslationKind; aBuffer,
-  bBuffer: PAnsiChar; const aCount: integer);
+  bBuffer: PChar; const aCount: integer);
 
 // compatibility
 {$IFNDEF DELPHI6UP}
@@ -2067,7 +2067,7 @@ uses
   Consts, {$IFDEF DELPHI6UP}RTLConsts, {$ENDIF}ImgList, StdCtrls, SysConst;
 
 const
-  MPH_VERSION = 'december 06, 2006; ?markus stephany, vcl[at]mirkes[dot]de';
+  MPH_VERSION = 'december 06, 2006; © markus stephany, vcl[at]mirkes[dot]de';
 
 resourcestring
 
@@ -2149,7 +2149,7 @@ end;
 // translate the buffer from ANSI to the given translation mode
 
 procedure TranslateBufferFromAnsi(const TType: TMPHTranslationKind; aBuffer,
-  bBuffer: PAnsiChar; const aCount: integer);
+  bBuffer: PChar; const aCount: integer);
 var
   LIntLoop: integer;
 begin
@@ -2157,7 +2157,7 @@ begin
     // changed 04/18/04: bBuffer and aBuffer were interchanged!
     tkAsIs: Move(aBuffer^, bBuffer^, aCount);
     tkDOS8,
-      tkASCII: CharToOEMBuff(@aBuffer[0], @bBuffer[0], aCount);
+      tkASCII: CharToOEMBuff(aBuffer, bBuffer, aCount);
     tkMAC: if aCount > 0 then
         for LIntLoop := 0 to Pred(aCount) do
           bBuffer[LIntLoop] :=
@@ -2178,7 +2178,7 @@ end;
 // translate the buffer to ANSI from the given translation mode
 
 procedure TranslateBufferToAnsi(const TType: TMPHTranslationKind; aBuffer,
-  bBuffer: PAnsiChar; const aCount: integer);
+  bBuffer: PChar; const aCount: integer);
 var
   LIntLoop: integer;
 begin
@@ -2246,7 +2246,7 @@ begin
 {$ENDIF}
   repeat
     Result := LStrTemp + IntToHex(GetTickCount, 8) + '.MPHT';
-  until GetFileAttributes(PAnsiChar(Result)) = $FFFFFFFF;
+  until GetFileAttributes(PChar(Result)) = $FFFFFFFF;
 
 end;
 
@@ -2314,8 +2314,8 @@ end;
 
 // convert '00 01 02...' to binary data
 
-function ConvertHexToBin(aFrom, aTo: PAnsiChar; const aCount: integer;
-  const SwapNibbles: boolean; var BytesTranslated: integer): PAnsiChar;
+function ConvertHexToBin(aFrom, aTo: PChar; const aCount: integer;
+  const SwapNibbles: boolean; var BytesTranslated: integer): PChar;
 var
   LBoolHi: boolean;
   LIntLoop: integer;
@@ -2351,8 +2351,8 @@ end;
 
 // convert binary data to '00 01 02...'
 
-function ConvertBinToHex(aFrom, aTo: PAnsiChar; const aCount: integer;
-  const SwapNibbles: boolean): PAnsiChar;
+function ConvertBinToHex(aFrom, aTo: PChar; const aCount: integer;
+  const SwapNibbles: boolean): PChar;
 var
   LIntLoop: integer;
   LByteCurrent: byte;
@@ -3498,7 +3498,7 @@ begin
   end;
 end;
 
-// Obtient la position dans le fichier ?partir de la position du curseur
+// Obtient la position dans le fichier à partir de la position du curseur
 
 function TCustomMPHexEditor.GetPosAtCursor(const aCol, aRow: integer): integer;
 begin
@@ -3712,13 +3712,13 @@ begin
         LArrNewData[0] := LBytNewData;
 
         if DataSize = 0 then
-          AppendBuffer(PAnsiChar(@LArrNewData), FBytesPerUnit, '', False)
+          AppendBuffer(PChar(@LArrNewData), FBytesPerUnit, '', False)
         else if SelCount = 0 then
         begin
-          InsertBuffer(PAnsiChar(@LArrNewData), FBytesPerUnit, LIntPos, '', False);
+          InsertBuffer(PChar(@LArrNewData), FBytesPerUnit, LIntPos, '', False);
         end
         else
-          ReplaceSelection(PAnsiChar(@LArrNewData), FBytesPerUnit, '', False);
+          ReplaceSelection(PChar(@LArrNewData), FBytesPerUnit, '', False);
       end
       else
       begin
@@ -3776,15 +3776,15 @@ begin
     if InsertMode then
     begin
       if SelCount > 0 then
-        ReplaceSelection(PAnsiChar(@LArrNewData), FBytesPerUnit, '', False)
+        ReplaceSelection(PChar(@LArrNewData), FBytesPerUnit, '', False)
       else
       begin
         if LIntPos = DataSize then
-          AppendBuffer(PAnsiChar(@LArrNewData), FBytesPerUnit)
+          AppendBuffer(PChar(@LArrNewData), FBytesPerUnit)
         else
         begin
           if (LIntPos mod FBytesPerUnit) = 0 then
-            InsertBuffer(PAnsiChar(@LArrNewData), FBytesPerUnit, LIntPos, '', False)
+            InsertBuffer(PChar(@LArrNewData), FBytesPerUnit, LIntPos, '', False)
           else
             IntChangeByte(LBytOldData, LArrNewData[0], LIntPos, Col, Row)
         end;
@@ -4540,7 +4540,7 @@ begin
   if DataSize < 1 then
   begin
     ResetSelection(False);
-    AppendBuffer(PAnsiChar(@L_BytAppend), 1);
+    AppendBuffer(PChar(@L_BytAppend), 1);
     Result := True;
     Exit;
   end;
@@ -4929,7 +4929,7 @@ begin
   end;
 end;
 
-procedure TCustomMPHexEditor.InternalAppendBuffer(Buffer: PAnsiChar; const Size:
+procedure TCustomMPHexEditor.InternalAppendBuffer(Buffer: PChar; const Size:
   integer);
 var
   LIntSize: integer;
@@ -4946,7 +4946,7 @@ begin
   CalcSizes;
 end;
 
-procedure TCustomMPHexEditor.InternalInsertBuffer(Buffer: PAnsiChar; const Size,
+procedure TCustomMPHexEditor.InternalInsertBuffer(Buffer: PChar; const Size,
   Position: integer);
 var
   LIntSize: integer;
@@ -4968,7 +4968,7 @@ begin
   CalcSizes;
 end;
 
-procedure TCustomMPHexEditor.InsertBuffer(aBuffer: PAnsiChar; const aSize, aPos:
+procedure TCustomMPHexEditor.InsertBuffer(aBuffer: PChar; const aSize, aPos:
   integer; const UndoDesc: string = ''; const MoveCursor: Boolean = True);
 begin
   //FDataStorage.CheckBounds(aPos);
@@ -4993,7 +4993,7 @@ begin
   Changed;
 end;
 
-procedure TCustomMPHexEditor.AppendBuffer(aBuffer: PAnsiChar; const aSize: integer;
+procedure TCustomMPHexEditor.AppendBuffer(aBuffer: PChar; const aSize: integer;
   const UndoDesc: string = ''; const MoveCursor: Boolean = True);
 var
   LIntSize: integer;
@@ -5017,7 +5017,7 @@ begin
   Changed;
 end;
 
-procedure TCustomMPHexEditor.ReplaceSelection(aBuffer: PAnsiChar; aSize: integer;
+procedure TCustomMPHexEditor.ReplaceSelection(aBuffer: PChar; aSize: integer;
   const UndoDesc: string = ''; const MoveCursor: Boolean = True);
 var
   LIntStart,
@@ -5107,7 +5107,7 @@ begin
 end;
 
 function TCustomMPHexEditor.BufferFromFile(const aPos: integer; var aCount:
-  integer): PAnsiChar;
+  integer): PChar;
 begin
   if (aPos < 0) or (aPos >= DataSize) then
     raise EMPHexEditor.Create(ERR_INVALID_BUFFERFROMFILE)
@@ -5246,7 +5246,7 @@ begin
   end;
 end;
 
-function TCustomMPHexEditor.Find(aBuffer: PAnsiChar; aCount: integer; const aStart,
+function TCustomMPHexEditor.Find(aBuffer: PChar; aCount: integer; const aStart,
   aEnd: integer; const IgnoreCase: boolean): integer;
 var
   LBoolDummy: Boolean;
@@ -5339,7 +5339,7 @@ begin
   CreateUndo(ufKindSelection, AStart, aCount, 0, '');
 end;
 
-function TCustomMPHexEditor.FindWithWildcard(aBuffer: PAnsiChar;
+function TCustomMPHexEditor.FindWithWildcard(aBuffer: PChar;
   aCount: integer; const aStart, aEnd: integer; const IgnoreCase: boolean;
   const Wildcard: char): integer;
 var
@@ -5538,7 +5538,7 @@ end;
 
 procedure TCustomMPHexEditor.SetAsText(const Value: string);
 var
-  LpszBuffer: PAnsiChar;
+  LpszBuffer: PChar;
 begin
   if DataSize > 0 then
   begin
@@ -5559,7 +5559,7 @@ end;
 
 procedure TCustomMPHexEditor.SetAsHex(const Value: string);
 var
-  LpszBuffer: PAnsiChar;
+  LpszBuffer: PChar;
   LIntAmount: integer;
 begin
   if DataSize > 0 then
@@ -7364,7 +7364,7 @@ begin
   Result := (not IsFileSizeFixed) and FAllowInsertMode and (not FReadOnlyView)
 end;
 
-function TCustomMPHexEditor.Replace(aBuffer: PAnsiChar; aPosition, aOldCount,
+function TCustomMPHexEditor.Replace(aBuffer: PChar; aPosition, aOldCount,
   aNewCount: integer;
   const UndoDesc: string = ''; const MoveCursor: Boolean = False): integer;
 var
@@ -7925,7 +7925,7 @@ var
 
   function PUndoRec: PMPHUndoRec;
   begin
-    Result := PMPHUndoRec(@(PAnsiChar(Memory)[urPos]))
+    Result := PMPHUndoRec(@(PChar(Memory)[urPos]))
   end;
   //LPurUndoRec: PMPHUndoRec;
 
@@ -7992,7 +7992,7 @@ var
         end
         else
         begin
-          Move(PAnsiChar(Memory)[LIntRecSize], Memory^, Size - LIntRecSize);
+          Move(PChar(Memory)[LIntRecSize], Memory^, Size - LIntRecSize);
           Size := Size - LIntRecSize;
           if FCount > 0 then
             Dec(FCount);
@@ -8227,7 +8227,7 @@ begin
     case LEnumUndo of
       ufKindBytesChanged:
         begin
-          FEditor.WriteBuffer(PAnsiChar(Memory)[Position - 1], LRecUndo.Pos,
+          FEditor.WriteBuffer(PChar(Memory)[Position - 1], LRecUndo.Pos,
             LRecUndo.Count);
           FEditor.SetChanged(LRecUndo.Pos, ufFlagByte1Changed in
             LRecUndo.Flags);
@@ -8340,7 +8340,7 @@ begin
         end;
       ufKindConvert:
         begin
-          FEditor.WriteBuffer(PAnsiChar(Memory)[Position - 1], LRecUndo.Pos,
+          FEditor.WriteBuffer(PChar(Memory)[Position - 1], LRecUndo.Pos,
             LRecUndo.Count);
           PopulateUndo(LRecUndo);
           if DWORD(FEditor.FModifiedBytes.Size) >= (LRecUndo.Pos) then
@@ -8449,7 +8449,7 @@ function TMPHUndoStorage.Redo: boolean;
   begin
     with FRedoPointer^ do
     begin
-      Move(PAnsiChar(FRedoPointer)[FRedoPointer^.DataLen], FEditor.FBookmarks,
+      Move(PChar(FRedoPointer)[FRedoPointer^.DataLen], FEditor.FBookmarks,
         sizeof(TMPHBookmarks));
 
       with FEditor.GetCursorAtPos(CurPos, ufFlagInCharField in Flags) do
@@ -8464,7 +8464,7 @@ function TMPHUndoStorage.Redo: boolean;
       FEditor.FModified := ufFlagModified in Flags;
       FEditor.InsertMode := (ufFlagInsertMode in Flags);
 
-      with PUndoSelRec(@(PAnsiChar(FRedoPointer)[FRedoPointer^.DataLen +
+      with PUndoSelRec(@(PChar(FRedoPointer)[FRedoPointer^.DataLen +
         sizeof(TMPHBookmarks)]))^ do
         FEditor.SetSelection(SelPos, SelStart, SelEnd);
 
@@ -8515,7 +8515,7 @@ begin
         end;
       ufKindInsertBuffer:
         begin
-          FEditor.InternalInsertBuffer(PAnsiChar(@(FRedoPointer^.Buffer)),
+          FEditor.InternalInsertBuffer(PChar(@(FRedoPointer^.Buffer)),
             FRedoPointer^.Count, FRedoPointer^.Pos);
           SetEditorStateFromRedoRec;
         end;
@@ -8535,7 +8535,7 @@ begin
         begin
           FEditor.InternalDelete(FRedoPointer^.Pos,
             FRedoPointer^.Pos + FRedoPointer^.ReplCount, -1, 0);
-          FEditor.InternalInsertBuffer(PAnsiChar(@(FRedoPointer^.Buffer)),
+          FEditor.InternalInsertBuffer(PChar(@(FRedoPointer^.Buffer)),
             FRedoPointer^.Count, FRedoPointer^.Pos);
           SetEditorStateFromRedoRec;
         end;
@@ -8543,13 +8543,13 @@ begin
         begin
           FEditor.InternalDelete(FRedoPointer^.Pos,
             FRedoPointer^.Pos + FRedoPointer^.Count, -1, 0);
-          FEditor.InternalInsertBuffer(PAnsiChar(@(FRedoPointer^.Buffer)),
+          FEditor.InternalInsertBuffer(PChar(@(FRedoPointer^.Buffer)),
             FRedoPointer^.Count, FRedoPointer^.Pos);
           SetEditorStateFromRedoRec;
         end;
       ufKindAppendBuffer:
         begin
-          FEditor.InternalAppendBuffer(PAnsiChar(@(FRedoPointer^.Buffer)),
+          FEditor.InternalAppendBuffer(PChar(@(FRedoPointer^.Buffer)),
             FRedoPointer^.Count);
           SetEditorStateFromRedoRec;
         end;
@@ -8617,9 +8617,9 @@ var
       if FEditor.FModified then
         Include(Flags, ufFlagModified);
     end;
-    Move(FEditor.FBookmarks, PAnsiChar(FRedoPointer)[FRedoPointer^.DataLen],
+    Move(FEditor.FBookmarks, PChar(FRedoPointer)[FRedoPointer^.DataLen],
       sizeof(TMPHBookmarks));
-    with PUndoSelRec(@(PAnsiChar(FRedoPointer)[FRedoPointer^.DataLen +
+    with PUndoSelRec(@(PChar(FRedoPointer)[FRedoPointer^.DataLen +
       sizeof(TMPHBookmarks)]))^ do
     begin
       SelStart := FEditor.FSelStart;
