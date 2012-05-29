@@ -7,14 +7,5 @@
     <Transaction>2007-07-03 15:17:22.664.cpp,E:\wyproject\SuperParse2007\Unit1.cpp=E:\wyproject\SuperParse2007\UI\FrmSetup.cpp</Transaction>
     <Transaction>2007-07-03 15:17:22.664.h,E:\wyproject\SuperParse2007\Unit1.h=E:\wyproject\SuperParse2007\UI\FrmSetup.h</Transaction>
     <Transaction>2007-07-03 15:17:22.664.dfm,E:\wyproject\SuperParse2007\Unit1.dfm=E:\wyproject\SuperParse2007\UI\FrmSetup.dfm</Transaction>
-    <Transaction>2012/05/29 08:33:40.552.lib,E:\lib\wylib\lib\wycommon.lib=</Transaction>
-    <Transaction>2012/05/29 08:33:40.567.lib,E:\lib\wylib\lib\wygui.lib=</Transaction>
-    <Transaction>2012/05/29 08:33:40.575.lib,E:\lib\wylib\lib\wylocal.lib=</Transaction>
-    <Transaction>2012/05/29 08:33:40.583.lib,E:\lib\wylib\lib\wywindow.lib=</Transaction>
-    <Transaction>2012/05/29 08:33:45.081.h,E:\lib\wylib\include\wyconfig.h=</Transaction>
-    <Transaction>2012/05/29 08:33:48.562.cpp,E:\lib\TestLib\PythonScript.cpp=</Transaction>
-    <Transaction>2012/05/29 08:33:52.831.cpp,E:\lib\SelfLib\FileMapping.cpp=</Transaction>
-    <Transaction>2012/05/29 08:33:52.844.cpp,E:\lib\SelfLib\KOEItlbm.cpp=</Transaction>
-    <Transaction>2012/05/29 08:33:52.873.cpp,E:\lib\SelfLib\SearchTool.cpp=</Transaction>
   </Transactions>
 </BorlandProject>
