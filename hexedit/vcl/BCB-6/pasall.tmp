@@ -1,0 +1,5 @@
+﻿program pasall;
+uses
+  MPHexEditorReg in '..\MPHexEditorReg.pas';
+begin
+end.

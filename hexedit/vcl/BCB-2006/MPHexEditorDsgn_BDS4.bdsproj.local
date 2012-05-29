@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2007-03-12 20:35:48.703.bdsproj,C:\Documents and Settings\Administrator\My Documents\Borland Studio Projects\Package1.bdsproj=D:\DEVELOP\cpp\neteye\hexedit\vcl\BCB-2006\MPHexEditor_BDS4.bdsproj</Transaction>
+    <Transaction>2007-03-12 20:41:16.437.bdsproj,D:\DEVELOP\cpp\neteye\hexedit\vcl\BCB-2006\MPHexEditor_BDS4.bdsproj=D:\DEVELOP\cpp\neteye\hexedit\vcl\BCB-2006\MPHexEditorDSG_BDS4.bdsproj</Transaction>
+    <Transaction>2007-03-12 20:41:22.500.bdsproj,D:\DEVELOP\cpp\neteye\hexedit\vcl\BCB-2006\MPHexEditorDSG_BDS4.bdsproj=D:\DEVELOP\cpp\neteye\hexedit\vcl\BCB-2006\MPHexEditorDsgn_BDS4.bdsproj</Transaction>
+    <Transaction>2007-03-12 21:09:21.000.pas,D:\Program Files\Borland\BDS\4.0\source\ToolsAPI\DesignIntf.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

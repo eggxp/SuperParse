@@ -1,0 +1,36 @@
+object LogFrm: TLogFrm
+  Left = 0
+  Top = 0
+  Caption = #26085#24535
+  ClientHeight = 345
+  ClientWidth = 478
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object memLog: TMemo
+    Left = 0
+    Top = 0
+    Width = 478
+    Height = 345
+    Align = alClient
+    Color = clInfoBk
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clGreen
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    ExplicitLeft = 88
+    ExplicitTop = 72
+    ExplicitWidth = 185
+    ExplicitHeight = 89
+  end
+end

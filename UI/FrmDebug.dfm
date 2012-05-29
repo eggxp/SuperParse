@@ -1,0 +1,44 @@
+object DebugFrm: TDebugFrm
+  Left = 0
+  Top = 0
+  Caption = 'DebugFrm'
+  ClientHeight = 521
+  ClientWidth = 638
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object MemoDebug: TMemo
+    Left = 0
+    Top = 0
+    Width = 638
+    Height = 496
+    Align = alClient
+    Color = clInfoBk
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clGreen
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    ScrollBars = ssBoth
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 0
+    Top = 496
+    Width = 638
+    Height = 25
+    Align = alBottom
+    Caption = 'Button1'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+end
