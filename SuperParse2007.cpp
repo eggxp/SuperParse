@@ -1,6 +1,8 @@
 //---------------------------------------------------------------------
+
 #include <vcl.h>
 #pragma hdrstop
+#include <tchar.h>
 //---------------------------------------------------------------------
 USEFORM("UI\FrmSourceEdit.cpp", SourceEditFrm);
 USEFORM("UI\FrmPlugin.cpp", PluginFrm);
@@ -21,11 +23,12 @@ USEFORM("UI\FrmConfig.cpp", ConfigFrm);
 USEFORM("UI\FrmGoTo.cpp", GoToFrm);
 USEFORM("UI\FrmEditFileDescribe.cpp", EditFileDescribeFrm);
 //---------------------------------------------------------------------------
-//---------------------------------------------------------------------------
-WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
-	Application->Initialize();
-	Application->CreateForm(__classid(TMainForm), &MainForm);
+	try
+	{
+		Application->Initialize();
+		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->CreateForm(__classid(TAboutBox), &AboutBox);
 		Application->CreateForm(__classid(TMainForm), &MainForm);
 		Application->CreateForm(__classid(TGoToFrm), &GoToFrm);
@@ -59,7 +62,22 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		Application->CreateForm(__classid(TSourceGenDesignFrm), &SourceGenDesignFrm);
 		Application->CreateForm(__classid(TTranslationFrm), &TranslationFrm);
 		Application->Run();
-
+	}
+	catch (Exception &exception)
+	{
+		Application->ShowException(&exception);
+	}
+	catch (...)
+	{
+		try
+		{
+			throw Exception("");
+		}
+		catch (Exception &exception)
+		{
+			Application->ShowException(&exception);
+		}
+	}
 	return 0;
 }
 //---------------------------------------------------------------------

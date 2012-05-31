@@ -150,8 +150,8 @@ String AnsiUTF8BIGDataToUnicodeGB(char *lpdata, int len)
 	{
 		return "";
 	}
-	AnsiString resultt = tlbm_UTF8ToAnsi(lpdata, len);
-	AnsiString results;
+	String resultt = tlbm_UTF8ToAnsi(lpdata, len);
+	String results;
 	results.SetLength(resultt.Length() * 2);
 	int covLen = LCMapString(0x0804,LCMAP_SIMPLIFIED_CHINESE, resultt.c_str(), resultt.Length(), results.c_str(), results.Length());
 	return String(results.c_str(), covLen);
