@@ -18,6 +18,7 @@
 #pragma link "MPHexEditor"
 #pragma link "MPHexEditorEx"
 #pragma link "cspin"
+#pragma link "dcrHexEditor"
 #pragma resource "*.dfm"
 
 #define	GRID_FIXED	2
@@ -98,7 +99,8 @@ void			TMDIChild::SetFileDescribe(FileStruct * curFile)
 {
 	memInfo->Lines->Clear();
 	memInfo->Lines->Add(FormatStr("ÃèÊö : %s", curFile->GetDescribe()));
-	memInfo->Lines->Add(FormatStr("Key : %s", IntToStr(curFile->GetKey())));
+	String key_str = IntToStr(int(curFile->GetKey()));
+	memInfo->Lines->Add(FormatStr("Key : %s", key_str));
 	memInfo->Lines->Add(FormatStr("Ê±¼ä : %s", curFile->GetDateTime()));
 	memInfo->Lines->Add(FormatStr("ÏêÇé : %s", curFile->GetRemark()));
 }
@@ -327,11 +329,15 @@ void			TMDIChild::ParseData(bool gotoPos)
 	m_HexEditor->Repaint();
 
     if(gotoPos)
-    {
-        if(m_bFastParseMode)
-            m_HexEditor->GotoPosition(m_FastParsePos);
-        else
-            m_HexEditor->GotoPosition(m_HexEditor->SelStart);
+	{
+		if(m_bFastParseMode)
+		{
+			m_HexEditor->GotoPosition(m_FastParsePos);
+		}
+		else
+		{
+			m_HexEditor->GotoPosition(m_HexEditor->SelStart);
+		}
     }
 }
 
@@ -920,7 +926,7 @@ void __fastcall 	TMDIChild::FastParseExecute(TObject *Sender)
 
     tagSelRect	selRect;
     if(GetTreeSelRect(selRect) == false)
-          return;
+		return;
     m_HexEditor->GotoPosition(selRect.SelStart + selRect.SelLength);
 }
 

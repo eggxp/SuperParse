@@ -10,8 +10,6 @@
 #include <System.hpp>
 #include <StdCtrls.hpp>
 #include <Menus.hpp>
-#include "MPHexEditor.hpp"
-#include "MPHexEditorEx.hpp"
 #include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
 #include <Grids.hpp>
@@ -27,6 +25,7 @@
 #include "cspin.h"
 #include "ColorAppend.h"
 #include "SearchTool.h"
+#include "dcrHexEditor.hpp"
 #include <stack>
 using namespace std;
 
@@ -147,7 +146,6 @@ __published:
 	TMenuItem *N19;
 	TMenuItem *N20;
 	TAction *actOutputSource;
-	TMPHexEditorEx *m_HexEditor;
 	TAction *actSetToUnicode;
 	TMenuItem *Unicode1;
 	TAction *actNewVersion;
@@ -176,6 +174,7 @@ __published:
 	TMenuItem *N32;
 	TAction *actOpenListFromTxt;
 	TMenuItem *txt1;
+	TMPHexEditor *m_HexEditor;
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall actOpenFileExecute(TObject *Sender);
 	void __fastcall actInsertModeExecute(TObject *Sender);
@@ -232,8 +231,8 @@ __published:
     void __fastcall actChangeCommentExecute(TObject *Sender);
     void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
     void __fastcall actWriteExecute(TObject *Sender);
-    void __fastcall m_HexEditorClick(TObject *Sender);
-    void __fastcall m_HexEditorKeyUp(TObject *Sender, WORD &Key,
+	void __fastcall m_HexEditorClick(TObject *Sender);
+	void __fastcall m_HexEditorKeyUp(TObject *Sender, WORD &Key,
           TShiftState Shift);
 	void __fastcall actOpenListFromTxtExecute(TObject *Sender);
     void __fastcall FormActivate(TObject *Sender);

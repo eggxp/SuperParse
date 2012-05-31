@@ -8,7 +8,6 @@
 #include "FrmPlugin.h"
 #include "FrmSearchFiles.h"
 #include "FrmDesign.h"
-#include "ScriptLoader.h"
 #include "FrmDebug.h"
 #include "FrmConfig.h"
 #include "FrmSourceEdit.h"
@@ -271,7 +270,7 @@ void __fastcall TMainForm::actWatchLogExecute(TObject *Sender)
 
 void __fastcall TMainForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 {
-	int result = Application->MessageBox("是否关闭程序?","关闭询问",MB_OKCANCEL);
+	int result = Application->MessageBox(L"是否关闭程序?",L"关闭询问",MB_OKCANCEL);
 	if(result == IDCANCEL)
 	{
 		CanClose = false;
@@ -342,7 +341,7 @@ void __fastcall TMainForm::FileClose1Execute(TObject *Sender)
 {
 	if(GetWorkSpaceManager()->GetWorkSpaceCount() == 0)
 		return;
-	int result = Application->MessageBox("是否保存所有?","是否保存所有?",MB_OKCANCEL);
+	int result = Application->MessageBox(L"是否保存所有?",L"是否保存所有?",MB_OKCANCEL);
 	bool	needSave = true;
 	if(result == IDCANCEL)
 	{
@@ -433,7 +432,7 @@ void __fastcall TMainForm::actDeleteWorkSpaceExecute(TObject *Sender)
         if(index < 0)
             return;
 
-        int result = Application->MessageBox("真的要删除吗?","删除?",MB_OKCANCEL);
+        int result = Application->MessageBox(L"真的要删除吗?",L"删除?",MB_OKCANCEL);
         if(result == IDCANCEL)
         {
             return;
@@ -459,7 +458,7 @@ void __fastcall TMainForm::actDeleteWorkSpaceExecute(TObject *Sender)
         if(curWorkSpace == NULL)
             return;
 
-        int result = Application->MessageBox("真的要删除吗?","删除?",MB_OKCANCEL);
+        int result = Application->MessageBox(L"真的要删除吗?",L"删除?",MB_OKCANCEL);
         if(result == IDCANCEL)
         {
             return;
@@ -588,7 +587,7 @@ void __fastcall TMainForm::actOpenDesignExecute(TObject *Sender)
     //打开设计页
     if(GetWorkSpaceManager()->IsNewFile())
     {
-        int result = Application->MessageBox("文件必须保存后才可以打开设计页, 是否保存?","保存询问",MB_OKCANCEL);
+        int result = Application->MessageBox(L"文件必须保存后才可以打开设计页, 是否保存?",L"保存询问",MB_OKCANCEL);
         if(result == IDCANCEL)
         {
             return;

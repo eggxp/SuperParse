@@ -76,10 +76,6 @@ object MDIChild: TMDIChild
       TabOrder = 1
       object TabSheet1: TTabSheet
         Caption = #35299#26512#27169#24335
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Splitter5: TSplitter
           Left = 625
           Top = 0
@@ -165,17 +161,17 @@ object MDIChild: TMDIChild
         OnClick = actOpenFileExecute
       end
       object ToolButton5: TToolButton
-        Left = 98
+        Left = 102
         Top = 0
         Action = actSaveFile
       end
       object ToolButton2: TToolButton
-        Left = 183
+        Left = 187
         Top = 0
         Action = actInsertMode
       end
       object ToolButton9: TToolButton
-        Left = 268
+        Left = 272
         Top = 0
         Caption = #32534#36753
         DropdownMenu = pmEdit
@@ -183,12 +179,12 @@ object MDIChild: TMDIChild
         Style = tbsDropDown
       end
       object ToolButton8: TToolButton
-        Left = 366
+        Left = 374
         Top = 0
         Action = actSetViewMode
       end
       object ToolButton6: TToolButton
-        Left = 451
+        Left = 459
         Top = 0
         Caption = #35821#35328
         DropdownMenu = pmLanguage
@@ -196,17 +192,17 @@ object MDIChild: TMDIChild
         Style = tbsDropDown
       end
       object ToolButton1: TToolButton
-        Left = 549
+        Left = 561
         Top = 0
         Action = actFastParse
       end
       object ToolButton10: TToolButton
-        Left = 634
+        Left = 646
         Top = 0
         Action = actParseAsList
       end
       object ToolButton3: TToolButton
-        Left = 719
+        Left = 731
         Top = 0
         Caption = #25554#20214
         DropdownMenu = pmExePlug
@@ -391,6 +387,47 @@ object MDIChild: TMDIChild
           Width = 100
         end>
     end
+    object m_HexEditor: TMPHexEditor
+      Left = 1
+      Top = 1
+      Width = 762
+      Height = 349
+      Cursor = crIBeam
+      Align = alClient
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Courier New'
+      Font.Style = []
+      OnClick = m_HexEditorClick
+      OnMouseDown = m_HexEditorMouseDown
+      OnMouseMove = m_HexEditorMouseMove
+      OnMouseUp = m_HexEditorMouseUp
+      ParentFont = False
+      TabOrder = 1
+      BytesPerRow = 16
+      Translation = tkAsIs
+      OffsetFormat = '-!10:0x|'
+      Colors.Background = clWindow
+      Colors.ChangedBackground = 11075583
+      Colors.ChangedText = clMaroon
+      Colors.CursorFrame = clNavy
+      Colors.Offset = clBlack
+      Colors.OddColumn = clBlue
+      Colors.EvenColumn = clNavy
+      Colors.CurrentOffsetBackground = clBtnShadow
+      Colors.OffsetBackground = clBtnFace
+      Colors.CurrentOffset = clBtnHighlight
+      Colors.Grid = clBtnFace
+      Colors.NonFocusCursorFrame = clAqua
+      Colors.ActiveFieldBackground = clWindow
+      FocusFrame = True
+      DrawGridLines = False
+      Version = 'october 7th, 2010; ?markus stephany, http://launchpad.net/dcr'
+      OnChange = m_HexEditorChange
+      OnDrawCell = m_HexEditorDrawCell
+      BytesPerBlock = -1
+    end
   end
   object ActionList1: TActionList
     Images = ImageList1
@@ -558,7 +595,7 @@ object MDIChild: TMDIChild
     Left = 688
     Top = 160
     Bitmap = {
-      494C010119001D00080020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010119001D00240020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000E0000000010020000000000000C0
       010000000000000000000000000000000000000000000000000000000000BDBD
       BD00CECECE00525252008C8C8C008484840073737300737373006B6B6B006B6B
