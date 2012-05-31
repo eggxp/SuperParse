@@ -39,7 +39,7 @@ private:
 	AList<tagPluginInfo>		m_ParseVar;
 	ParseEngine 			*	m_ParseEngine;
 
-	void						LoadDllByName(AnsiString dllName);
+	void						LoadDllByName(String dllName);
 public:
 	PluginManager();
 	~PluginManager();

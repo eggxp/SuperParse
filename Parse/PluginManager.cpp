@@ -83,7 +83,7 @@ void		PluginManager::LoadDLL(String path, ParseEngine * curEngine)
 
 }
 
-void						PluginManager::LoadDllByName(AnsiString dllName)
+void						PluginManager::LoadDllByName(String dllName)
 {
 	HANDLE hDll = LoadLibrary(dllName.c_str());
 	getTypeInfo pfnGet = (getTypeInfo)GetProcAddress(hDll, "exeGetTypeInfo");

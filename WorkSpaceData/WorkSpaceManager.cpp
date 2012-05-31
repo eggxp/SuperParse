@@ -178,10 +178,10 @@ WorkPackHead		*		WorkPacks::FindWorkPack(String head)
 
 int 	ComparWorkPackName(WorkPackHead *Item1, WorkPackHead *Item2)
 {
-	AnsiString Dis1 =  Item1->m_Head;
-	AnsiString Dis2 =  Item2->m_Head;
+	String Dis1 =  Item1->m_Head;
+	String Dis2 =  Item2->m_Head;
 
-	return	Dis1.AnsiCompare(Dis2);
+	return	Dis1.Compare(Dis2);
 }
 
 void        WorkPacks::LoadWorkSpaces(AList<WorkSpace> * workSpaces)
@@ -239,10 +239,10 @@ void			WorkSpaceManager::Clear()
 
 int 	ComparWorkSpaceName(WorkSpace *Item1, WorkSpace *Item2)
 {
-	AnsiString Dis1 =  Item1->GetFullName();
-	AnsiString Dis2 =  Item2->GetFullName();
+	String Dis1 =  Item1->GetFullName();
+	String Dis2 =  Item2->GetFullName();
 
-	return	Dis1.AnsiCompare(Dis2);
+	return	Dis1.Compare(Dis2);
 }
 
 WorkSpace	*			WorkSpaceManager::CreateNewWorkSpace(bool  needRefresh)

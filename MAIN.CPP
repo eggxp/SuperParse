@@ -176,7 +176,7 @@ void __fastcall TMainForm::TabSet1DrawTab(TObject *Sender, TCanvas *TabCanvas,
 	{
        TabCanvas->Font->Color = clBlack;
 	}
-	TabCanvas->TextOutA(R.left,R.top,TabSet1->Tabs->Strings[Index]);	
+	TabCanvas->TextOut(R.left,R.top,TabSet1->Tabs->Strings[Index]);
 }
 
 //---------------------------------------------------------------------------

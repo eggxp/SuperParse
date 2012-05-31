@@ -19,6 +19,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<_TCHARMapping>wchar_t</_TCHARMapping>
 			<LinkPackageStatics>xmlrtl.lib;vclactnband.lib;bcbsmp.lib;dbrtl.lib;dsnap.lib;vcldb.lib;rtl.lib;vcl.lib;vclx.lib;dcrHexEditor_BCB6.lib</LinkPackageStatics>
 			<OutputExt>exe</OutputExt>
 			<ILINK_IntermediateOutputPath>debug_build\obj</ILINK_IntermediateOutputPath>
@@ -43,7 +44,7 @@
 			<BCC_StackFrames>true</BCC_StackFrames>
 			<BRCC_UserSuppliedOptions> -I$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>
 			<PackageLibs>xmlrtl.lib;vclactnband.lib;bcbsmp.lib;dbrtl.lib;dsnap.lib;vcldb.lib</PackageLibs>
-			<IncludePath>lib\SelfLib\;DelphiCodeRevival-trunk-2011-10-04\src\;SourceGen\;Other\;Parse\;SourceData\;UI\;WorkSpaceData\;PlugInterface\;Parse;WorkSpaceData;Other;UI;SourceData;PlugInterface;SourceGen;lib\wylib\include;DelphiCodeRevival-trunk-2011-10-04\src\packages\Debug_Build;$(IncludePath)</IncludePath>
+			<IncludePath>lib\wylib\include\;lib\SelfLib\;DelphiCodeRevival-trunk-2011-10-04\src\;SourceGen\;Other\;Parse\;SourceData\;UI\;WorkSpaceData\;PlugInterface\;Parse;WorkSpaceData;Other;UI;SourceData;PlugInterface;SourceGen;lib\wylib\include;DelphiCodeRevival-trunk-2011-10-04\src\packages\Debug_Build;$(IncludePath)</IncludePath>
 			<BCC_PCHCache>true</BCC_PCHCache>
 			<DCC_DcuOutput>debug_build\obj</DCC_DcuOutput>
 			<BCC_IntegerSizedEnums>false</BCC_IntegerSizedEnums>
@@ -55,7 +56,7 @@
 			<BRCC_IncludePath>E:\lib\TestLib;Other;PlugInterface;E:\lib\hexedit\vcl;Parse;D:\EurekaLog 5\Delphi10;SourceGen;SourceData;UI\;WorkSpaceData;E:\lib\SelfLib;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_IncludePath>
 			<BCC_DisableOptimizations>true</BCC_DisableOptimizations>
 			<BCC_ZeroLengthEmptyBaseClass>true</BCC_ZeroLengthEmptyBaseClass>
-			<ILINK_LibraryPath>lib\wylib\lib\;lib\SelfLib\;DelphiCodeRevival-trunk-2011-10-04\src\;SourceGen\;Other\;Parse\;SourceData\;WorkSpaceData\;PlugInterface\;Other;PlugInterface;Parse;SourceGen;SourceData;UI\;WorkSpaceData;$(BDS)\lib\obj;UI;DelphiCodeRevival-trunk-2011-10-04\src\packages\Debug_Build;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<ILINK_LibraryPath>lib\wylib\include\;DelphiCodeRevival-trunk-2011-10-04\src\packages\Debug_Build\;lib\wylib\lib\;lib\SelfLib\;DelphiCodeRevival-trunk-2011-10-04\src\;SourceGen\;Other\;Parse\;SourceData\;WorkSpaceData\;PlugInterface\;Other;PlugInterface;Parse;SourceGen;SourceData;UI\;WorkSpaceData;$(BDS)\lib\obj;UI;DelphiCodeRevival-trunk-2011-10-04\src\packages\Debug_Build;$(ILINK_LibraryPath)</ILINK_LibraryPath>
 			<BCC_Defines>NO_STRICT;_RTLDLL;NDEBUG</BCC_Defines>
 			<DCC_ObjOutput>debug_build\obj</DCC_ObjOutput>
 			<BRCC_Defines>NO_STRICT;_RTLDLL;NDEBUG</BRCC_Defines>
@@ -243,30 +244,18 @@
 				<DependentOn>UI\FrmDesign.h</DependentOn>
 				<BuildOrder>29</BuildOrder>
 			</CppCompile>
-			<LibFiles Include="lib\wylib\lib\wycommon.lib">
-				<IgnorePath>true</IgnorePath>
-				<BuildOrder>51</BuildOrder>
-			</LibFiles>
 			<CppCompile Include="lib\SelfLib\SearchTool.cpp">
 				<DependentOn>lib\SelfLib\SearchTool.h</DependentOn>
 				<BuildOrder>54</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="lib\wylib\include\CommFunc.cpp">
+				<DependentOn>lib\wylib\include\CommFunc.h</DependentOn>
+				<BuildOrder>51</BuildOrder>
 			</CppCompile>
 			<CppCompile Include="lib\SelfLib\KOEItlbm.cpp">
 				<DependentOn>lib\SelfLib\KOEItlbm.h</DependentOn>
 				<BuildOrder>53</BuildOrder>
 			</CppCompile>
-			<LibFiles Include="lib\wylib\lib\wywindow.lib">
-				<IgnorePath>true</IgnorePath>
-				<BuildOrder>54</BuildOrder>
-			</LibFiles>
-			<LibFiles Include="lib\wylib\lib\wylocal.lib">
-				<IgnorePath>true</IgnorePath>
-				<BuildOrder>53</BuildOrder>
-			</LibFiles>
-			<LibFiles Include="lib\wylib\lib\wygui.lib">
-				<IgnorePath>true</IgnorePath>
-				<BuildOrder>52</BuildOrder>
-			</LibFiles>
 			<CppCompile Include="lib\SelfLib\FileMapping.cpp">
 				<DependentOn>lib\SelfLib\FileMapping.h</DependentOn>
 				<BuildOrder>52</BuildOrder>
@@ -392,6 +381,9 @@
 				<DependentOn>PlugInterface\PlugInterface.h</DependentOn>
 				<BuildOrder>48</BuildOrder>
 			</CppCompile>
+			<ResFiles Include="DelphiCodeRevival-trunk-2011-10-04\src\dcrHexEditor.res">
+				<BuildOrder>51</BuildOrder>
+			</ResFiles>
 			<FormResources Include="UI\FrmSourceEdit.dfm"/>
 			<FormResources Include="UI\FrmPlugin.dfm"/>
 			<FormResources Include="UI\FrmSourceGenDesign.dfm"/>

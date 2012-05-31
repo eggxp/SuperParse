@@ -150,8 +150,8 @@ void __fastcall TListParseFrm::btOutputClick(TObject *Sender)
 	}
 
 	//执行选择的文件
-    AnsiString execCmd = ExtractFilePath(Application->ExeName) + "xmlist.exe " + "\"" + SaveDialog1->FileName + "\"";
-    WinExec( execCmd.c_str(), SW_MAXIMIZE);
+    String execCmd = ExtractFilePath(Application->ExeName) + "xmlist.exe " + "\"" + SaveDialog1->FileName + "\"";
+    WinExec(AnsiString(execCmd).c_str(), SW_MAXIMIZE);
 }
 //---------------------------------------------------------------------------
 

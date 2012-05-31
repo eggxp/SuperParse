@@ -128,10 +128,10 @@ String		GetLangText(char *lpData, int len)
 	}
 	else if(gLangModule == lmUnicode)
 	{
-		AnsiString	desBuffer;
+		String	desBuffer;
 		desBuffer.SetLength(len);                
-		int size = UnicodeToUtf8(desBuffer.c_str(), (wchar_t *)lpData, len);
-		return	tlbm_UTF8ToAnsi(desBuffer.c_str(), size);
+		int size = UnicodeToUtf8(AnsiString(desBuffer).c_str(), (wchar_t *)lpData, len);
+		return	tlbm_UTF8ToAnsi(AnsiString(desBuffer).c_str(), size);
 	}
 
 	return String(lpData, len);

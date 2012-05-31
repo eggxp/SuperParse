@@ -26,8 +26,8 @@ bool		TxtToListLoader::IsUnicode(TStringList * inputList)
 	if(inputList->Strings[0].Length() > 2)
 	{
 		int pos = 0;
-		AnsiString read_content = inputList->Strings[0];
-		WORD	result = ReadWORD(read_content.c_str(), pos);
+		String read_content = inputList->Strings[0];
+		WORD	result = ReadWORD(AnsiString(read_content).c_str(), pos);
 		if(result == 0xFFFE)
 			return	true;
 

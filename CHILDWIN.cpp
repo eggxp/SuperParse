@@ -15,8 +15,6 @@
 #include "FrmSearch.h"
 #include "TxtToListLoader.h"
 //---------------------------------------------------------------------
-#pragma link "MPHexEditor"
-#pragma link "MPHexEditorEx"
 #pragma link "cspin"
 #pragma link "dcrHexEditor"
 #pragma resource "*.dfm"
@@ -449,7 +447,7 @@ void __fastcall TMDIChild::m_HexEditorDrawCell(TObject *Sender,
 			ADefaultDraw = false;
 			ACanvas->Brush->Color = color;
 			ACanvas->FillRect(ARect);
-			ACanvas->TextOutA(ARect.left, ARect.top, AWideText);
+			ACanvas->TextOut(ARect.left, ARect.top, AWideText);
 			return;
 		}
 	}
@@ -1362,23 +1360,23 @@ void __fastcall TMDIChild::actReNameStructExecute(TObject *Sender)
 
 void __fastcall TMDIChild::actFindExecute(TObject *Sender)
 {
-    AnsiString result = SearchFrm->GetSearchResult();
+    String result = SearchFrm->GetSearchResult();
     if(result == "")
         return;
 
     char	*startPointer = m_HexEditor->GetFastPointer(0, m_HexEditor->DataSize) + m_HexEditor->SelStart;
     int     searchSize = m_HexEditor->DataSize - m_HexEditor->SelStart;
 
-    LPVOID  curData = m_SearchEngine.NormalSearch(startPointer, searchSize+1, result.c_str());
+    LPVOID  curData = m_SearchEngine.NormalSearch(startPointer, searchSize+1, AnsiString(result).c_str());
     if(curData == NULL)
     {
         ShowMessage("没有结果");
         return;
     }
 
-    AnsiString  buffer;
+    String  buffer;
     buffer.SetLength(result.Length());
-    int len = HexStrToBin(buffer.c_str(), result);
+    int len = HexStrToBin(AnsiString(buffer).c_str(), result);
 
     m_HexEditor->SelStart += (char *)curData - startPointer;
     m_HexEditor->SelCount = len;
@@ -1454,8 +1452,8 @@ void __fastcall TMDIChild::actOpenPluginExecute(TObject *Sender)
         return;
     }
 
-    AnsiString openFileName = GetAppPath() + EX_PLUGIN_DIR + exePlug->ExeName;
-    ShellExecute(NULL, "open", openFileName.c_str(), NULL, NULL, SW_SHOWNORMAL);    
+    String openFileName = GetAppPath() + EX_PLUGIN_DIR + exePlug->ExeName;
+    ShellExecute(NULL, L"open", openFileName.c_str(), NULL, NULL, SW_SHOWNORMAL);
 }
 
 //---------------------------------------------------------------------------
@@ -1591,10 +1589,10 @@ void __fastcall TMDIChild::actWriteExecute(TObject *Sender)
 	//插入数据
     if(pos + nodeSize > dataSize)
     {
-        AnsiString  buffer;
+        String  buffer;
         buffer.SetLength(pos + nodeSize - dataSize);
         memset(buffer.c_str(), '\0', buffer.Length());
-		m_HexEditor->InsertBuffer(buffer.c_str(), buffer.Length(), selRect.SelStart, "insert", false);
+		m_HexEditor->InsertBuffer(AnsiString(buffer).c_str(), buffer.Length(), selRect.SelStart, "insert", false);
     }
 
 	

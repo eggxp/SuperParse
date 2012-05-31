@@ -8,5 +8,10 @@
     <Transaction>2007-07-03 15:17:22.664.h,E:\wyproject\SuperParse2007\Unit1.h=E:\wyproject\SuperParse2007\UI\FrmSetup.h</Transaction>
     <Transaction>2007-07-03 15:17:22.664.dfm,E:\wyproject\SuperParse2007\Unit1.dfm=E:\wyproject\SuperParse2007\UI\FrmSetup.dfm</Transaction>
     <Transaction>2012/05/31 10:37:47.445.cpp,E:\Projects\SuperParse\Other\ScriptLoader.cpp=</Transaction>
+    <Transaction>2012/05/31 14:04:43.242.obj,E:\Projects\SuperParse\DelphiCodeRevival-trunk-2011-10-04\src\packages\Debug_Build\MPHexEditor.obj=</Transaction>
+    <Transaction>2012/05/31 14:31:05.369.lib,E:\Projects\SuperParse\lib\wylib\lib\wycommon.lib=</Transaction>
+    <Transaction>2012/05/31 14:40:04.267.lib,E:\Projects\SuperParse\lib\wylib\lib\wygui.lib=</Transaction>
+    <Transaction>2012/05/31 14:40:04.282.lib,E:\Projects\SuperParse\lib\wylib\lib\wylocal.lib=</Transaction>
+    <Transaction>2012/05/31 14:40:04.291.lib,E:\Projects\SuperParse\lib\wylib\lib\wywindow.lib=</Transaction>
   </Transactions>
 </BorlandProject>

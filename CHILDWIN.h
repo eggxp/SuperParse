@@ -41,9 +41,9 @@ struct	tagSelRect
 
 struct  tagExePlugins
 {
-	AnsiString          Name;
-	AnsiString          ClassName;
-    AnsiString          ExeName;
+	String          Name;
+	String          ClassName;
+    String          ExeName;
     int             RecvType;
 };
 
