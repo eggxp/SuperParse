@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.784,C:\Development\OpenSource\DelphiCodeRevival\examples\HexEditCustomTranslation\ct1.dfm=C:\Development\OpenSource\DelphiCodeRevival\examples\HexEditCustomTranslation\FormUnitCustomTranslation.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.784,C:\Development\OpenSource\DelphiCodeRevival\examples\HexEditCustomTranslation\ct1.pas=C:\Development\OpenSource\DelphiCodeRevival\examples\HexEditCustomTranslation\FormUnitCustomTranslation.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.891,C:\Development\OpenSource\DelphiCodeRevival\examples\HexEditCustomTranslation\custtrans.dproj=C:\Development\OpenSource\DelphiCodeRevival\examples\HexEditCustomTranslation\CustomTranslation.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

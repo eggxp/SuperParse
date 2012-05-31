@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="DIPasDoc 0.8.10">
+<TITLE>dcrHexEditorEx: Class TMPHPrintOptions</TITLE>
+<LINK rel="StyleSheet" href="Help.css">
+</HEAD>
+<BODY bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<TABLE cellspacing=1 cellpadding=4 width=100%>
+<TR bgcolor="e0e0e0">
+<TD><A href="AllUnits.htm"><CENTER>Units</CENTER></A></TD>
+<TD><A href="ClassHierarchy.htm"><CENTER>Class Hierarchy</CENTER></A></TD>
+<TD><A href="AllClass.htm"><CENTER>Classes, Interfaces and Objects</CENTER></A></TD>
+<TD><A href="AllTypes.htm"><CENTER>Types</CENTER></A></TD>
+<TD><A href="AllEnums.htm"><CENTER>Enumerations</CENTER></A></TD>
+<TD><A href="AllVaria.htm"><CENTER>Variables</CENTER></A></TD>
+<TD><A href="AllConst.htm"><CENTER>Constants</CENTER></A></TD>
+<TD><A href="AllFuncs.htm"><CENTER>Functions and Procedures</CENTER></A></TD>
+<TD><A href="AllIdent.htm"><CENTER>Identifiers</CENTER></A></TD>
+</TR>
+</TABLE>
+<A name="TMPHPrintOptions"><H1>Class TMPHPrintOptions</H1>
+</A><H2>Unit</H2>
+<A href="dcrHexEditorEx.htm">dcrHexEditorEx</A><BR><H2>Declaration</H2>
+<P><CODE>type TMPHPrintOptions = class(TPersistent)</CODE></P><H2>Description</H2>
+print / preview options<H2>Properties</H2>
+<H3>Overview</H3>
+<TABLE cellspacing=1 cellpadding=4 width=100%>
+<TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD width=100%><CODE>property <A href="TMPHPrintOptions.htm#Flags"><B>Flags</B></A>: TMPHPrintFlags;</CODE></TD></TR><TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD><CODE>property <A href="TMPHPrintOptions.htm#MarginBottom"><B>MarginBottom</B></A>: integer;</CODE></TD></TR><TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD><CODE>property <A href="TMPHPrintOptions.htm#MarginLeft"><B>MarginLeft</B></A>: integer;</CODE></TD></TR><TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD><CODE>property <A href="TMPHPrintOptions.htm#MarginRight"><B>MarginRight</B></A>: integer;</CODE></TD></TR><TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD><CODE>property <A href="TMPHPrintOptions.htm#MarginTop"><B>MarginTop</B></A>: integer;</CODE></TD></TR><TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD><CODE>property <A href="TMPHPrintOptions.htm#PageFooter"><B>PageFooter</B></A>: string;</CODE></TD></TR><TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD><CODE>property <A href="TMPHPrintOptions.htm#PageHeader"><B>PageHeader</B></A>: string;</CODE></TD></TR></TABLE><H3>Description</H3>
+<TABLE cellspacing=1 cellpadding=4 width=100%>
+<TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD width=100%><A name="Flags"><CODE>property <B>Flags</B>: TMPHPrintFlags;</CODE></A></TD></TR></TABLE><P>printing flags:<br><br> - pfSelectionOnly: only print data currently selected<br> - pfSelectionBold: render the current selection using either a bold font or inverted colors (if pfSelectionOnly isn't set)<br> - pfMonochrome: don't use colors, print/preview black on white<br> - pfUseBackgroundColor: fill the margin rect with the editor's background color (if pfMonochrome isn't set)<br> - pfCurrentViewOnly: just print the data currently displayed</P><TABLE cellspacing=1 cellpadding=4 width=100%>
+<TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD width=100%><A name="MarginBottom"><CODE>property <B>MarginBottom</B>: integer;</CODE></A></TD></TR></TABLE><P>bottom margin in Millimeters</P><TABLE cellspacing=1 cellpadding=4 width=100%>
+<TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD width=100%><A name="MarginLeft"><CODE>property <B>MarginLeft</B>: integer;</CODE></A></TD></TR></TABLE><P>left margin in Millimeters</P><TABLE cellspacing=1 cellpadding=4 width=100%>
+<TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD width=100%><A name="MarginRight"><CODE>property <B>MarginRight</B>: integer;</CODE></A></TD></TR></TABLE><P>right margin in Millimeters</P><TABLE cellspacing=1 cellpadding=4 width=100%>
+<TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD width=100%><A name="MarginTop"><CODE>property <B>MarginTop</B>: integer;</CODE></A></TD></TR></TABLE><P>top margin in Millimeters</P><TABLE cellspacing=1 cellpadding=4 width=100%>
+<TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD width=100%><A name="PageFooter"><CODE>property <B>PageFooter</B>: string;</CODE></A></TD></TR></TABLE><P>this line will be rendered on the bottom of the printed page (see <CODE><A href="TMPHPrintOptions.htm#PageHeader">PageHeader</A></CODE>)</P><TABLE cellspacing=1 cellpadding=4 width=100%>
+<TR bgcolor=#efefef valign=top><TD><IMG src="published.gif" alt="Published"></TD><TD width=100%><A name="PageHeader"><CODE>property <B>PageHeader</B>: string;</CODE></A></TD></TR></TABLE><P>this line will be rendered on top of the printed page, some characters have special meanings:<br><br> - the string may contain three parts separated by a "|" (pipe) character (left|center|right)<br> - each part knows some special variables: <ul> <li><b>%f</b>: substituted with the filename part of the editor's filename</li> <li><b>%F</b>: substituted with the expanded name of the editor's filename</li> <li><b>%p</b>: substituted with the number of the current page</li> <li><b>%P</b>: substituted with the number of pages</li> <li><b>%t</b>: substituted with the current time</li> <li><b>%d</b>: substituted with the current date</li> <li><b>%&gt;</b>: substituted with the long description of the editor's current <CODE><A href="TMPHexEditorEx.htm#Translation">Translation</A></CODE></li> <li><b>%&lt;</b>: substituted with the short description of the editor's current <CODE><A href="TMPHexEditorEx.htm#Translation">Translation</A></CODE></li> </ul></P><HR noshade size=1><EM>Generated by <A href="http://www.yunqa.de/delphi/">DIPasDoc 0.8.10</A> on Do 07. Okt 2010 13:15:08</EM>
+</BODY>
+</HTML>

@@ -1,0 +1,96 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{C262B8E8-4206-42F6-9F75-27410A22808F}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="HexEditCustomTranslation\CustomTranslation.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="HexEditOffsetShift\OffsetShift.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="HexEditOwnerDraw\OwnerDraw.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="HexEditSyncView\SyncView.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="HexViewer\HexViewer.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="HexEditor\HexEditor.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="CustomTranslation">
+			<MSBuild Projects="HexEditCustomTranslation\CustomTranslation.dproj"/>
+		</Target>
+		<Target Name="CustomTranslation:Clean">
+			<MSBuild Projects="HexEditCustomTranslation\CustomTranslation.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="CustomTranslation:Make">
+			<MSBuild Projects="HexEditCustomTranslation\CustomTranslation.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="OffsetShift">
+			<MSBuild Projects="HexEditOffsetShift\OffsetShift.dproj"/>
+		</Target>
+		<Target Name="OffsetShift:Clean">
+			<MSBuild Projects="HexEditOffsetShift\OffsetShift.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="OffsetShift:Make">
+			<MSBuild Projects="HexEditOffsetShift\OffsetShift.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="OwnerDraw">
+			<MSBuild Projects="HexEditOwnerDraw\OwnerDraw.dproj"/>
+		</Target>
+		<Target Name="OwnerDraw:Clean">
+			<MSBuild Projects="HexEditOwnerDraw\OwnerDraw.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="OwnerDraw:Make">
+			<MSBuild Projects="HexEditOwnerDraw\OwnerDraw.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="SyncView">
+			<MSBuild Projects="HexEditSyncView\SyncView.dproj"/>
+		</Target>
+		<Target Name="SyncView:Clean">
+			<MSBuild Projects="HexEditSyncView\SyncView.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="SyncView:Make">
+			<MSBuild Projects="HexEditSyncView\SyncView.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="HexViewer">
+			<MSBuild Projects="HexViewer\HexViewer.dproj"/>
+		</Target>
+		<Target Name="HexViewer:Clean">
+			<MSBuild Projects="HexViewer\HexViewer.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="HexViewer:Make">
+			<MSBuild Projects="HexViewer\HexViewer.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="HexEditor">
+			<MSBuild Projects="HexEditor\HexEditor.dproj"/>
+		</Target>
+		<Target Name="HexEditor:Clean">
+			<MSBuild Projects="HexEditor\HexEditor.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="HexEditor:Make">
+			<MSBuild Projects="HexEditor\HexEditor.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="CustomTranslation;OffsetShift;OwnerDraw;SyncView;HexViewer;HexEditor"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="CustomTranslation:Clean;OffsetShift:Clean;OwnerDraw:Clean;SyncView:Clean;HexViewer:Clean;HexEditor:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="CustomTranslation:Make;OffsetShift:Make;OwnerDraw:Make;SyncView:Make;HexViewer:Make;HexEditor:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>

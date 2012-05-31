@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.008,C:\Development\OpenSource\DelphiCodeRevival\examples\HexEditOwnerDraw\HexEditOwnerDraw.dproj=C:\Development\OpenSource\DelphiCodeRevival\examples\HexEditOwnerDraw\OwnerDraw.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.517,C:\Development\OpenSource\DelphiCodeRevival\examples\OwnerDraw\FormUnitOwnerDraw.dfm=C:\Development\OpenSource\DelphiCodeRevival\examples\OwnerDraw\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.951,C:\Development\OpenSource\DelphiCodeRevival\examples\OwnerDraw\HexEditOwnerDraw.dproj=C:\Development\OpenSource\DelphiCodeRevival\examples\OwnerDraw\ownerdraw.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.517,C:\Development\OpenSource\DelphiCodeRevival\examples\OwnerDraw\FormUnitOwnerDraw.pas=C:\Development\OpenSource\DelphiCodeRevival\examples\OwnerDraw\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
