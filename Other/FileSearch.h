@@ -13,7 +13,7 @@ class	AllFileSearch
 private:
 	CFileMappingStream	*		m_CurFile;
 
-	String				m_Data;
+	AnsiString				m_Data;
 
 	bool				CheckFile();
 

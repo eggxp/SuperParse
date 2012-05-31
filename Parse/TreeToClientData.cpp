@@ -201,8 +201,8 @@ void					TreeToClientData::OutputDetail(ParseTreeNode	*	parseNode)
 		//È¡µÃÍ·
 		String headName = FormatStr("%s_%s", parseNode->GetClassMember()->GetType(),
 											parseNode->GetClassMember()->GetName());
-		headName = ReplaceStr(headName, "[", "_");
-		headName = ReplaceStr(headName, "]", "_");
+		headName = Strutils::ReplaceStr(headName, "[", "_");
+		headName = Strutils::ReplaceStr(headName, "]", "_");
 
 		m_ParseResultData.AddColumn(headName);
 	}

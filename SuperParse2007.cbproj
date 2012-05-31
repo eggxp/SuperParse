@@ -43,7 +43,7 @@
 			<BCC_StackFrames>true</BCC_StackFrames>
 			<BRCC_UserSuppliedOptions> -I$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>
 			<PackageLibs>xmlrtl.lib;vclactnband.lib;bcbsmp.lib;dbrtl.lib;dsnap.lib;vcldb.lib</PackageLibs>
-			<IncludePath>lib\SelfLib\;DelphiCodeRevival-trunk-2011-10-04\src\;SourceGen\;Other\;Parse\;SourceData\;UI\;WorkSpaceData\;PlugInterface\;Parse;WorkSpaceData;Other;UI;SourceData;PlugInterface;SourceGen;lib\wylib\include;$(IncludePath)</IncludePath>
+			<IncludePath>lib\SelfLib\;DelphiCodeRevival-trunk-2011-10-04\src\;SourceGen\;Other\;Parse\;SourceData\;UI\;WorkSpaceData\;PlugInterface\;Parse;WorkSpaceData;Other;UI;SourceData;PlugInterface;SourceGen;lib\wylib\include;DelphiCodeRevival-trunk-2011-10-04\src\packages\Debug_Build;$(IncludePath)</IncludePath>
 			<BCC_PCHCache>true</BCC_PCHCache>
 			<DCC_DcuOutput>debug_build\obj</DCC_DcuOutput>
 			<BCC_IntegerSizedEnums>false</BCC_IntegerSizedEnums>
@@ -55,7 +55,7 @@
 			<BRCC_IncludePath>E:\lib\TestLib;Other;PlugInterface;E:\lib\hexedit\vcl;Parse;D:\EurekaLog 5\Delphi10;SourceGen;SourceData;UI\;WorkSpaceData;E:\lib\SelfLib;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_IncludePath>
 			<BCC_DisableOptimizations>true</BCC_DisableOptimizations>
 			<BCC_ZeroLengthEmptyBaseClass>true</BCC_ZeroLengthEmptyBaseClass>
-			<ILINK_LibraryPath>lib\wylib\lib\;lib\SelfLib\;DelphiCodeRevival-trunk-2011-10-04\src\;SourceGen\;Other\;Parse\;SourceData\;WorkSpaceData\;PlugInterface\;E:\lib\TestLib;Other;PlugInterface;E:\lib\hexedit\vcl;Parse;D:\EurekaLog 5\Delphi10;SourceGen;SourceData;UI\;WorkSpaceData;..\..\lib\wylib\lib;E:\lib\SelfLib;$(BDS)\lib\obj;$(BDS)\lib;UI</ILINK_LibraryPath>
+			<ILINK_LibraryPath>lib\wylib\lib\;lib\SelfLib\;DelphiCodeRevival-trunk-2011-10-04\src\;SourceGen\;Other\;Parse\;SourceData\;WorkSpaceData\;PlugInterface\;Other;PlugInterface;Parse;SourceGen;SourceData;UI\;WorkSpaceData;$(BDS)\lib\obj;UI;DelphiCodeRevival-trunk-2011-10-04\src\packages\Debug_Build;$(ILINK_LibraryPath)</ILINK_LibraryPath>
 			<BCC_Defines>NO_STRICT;_RTLDLL;NDEBUG</BCC_Defines>
 			<DCC_ObjOutput>debug_build\obj</DCC_ObjOutput>
 			<BRCC_Defines>NO_STRICT;_RTLDLL;NDEBUG</BRCC_Defines>

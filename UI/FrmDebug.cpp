@@ -4,7 +4,7 @@
 #pragma hdrstop
 
 #include "FrmDebug.h"
-#include "ScriptLoader.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -22,21 +22,21 @@ void        TDebugFrm::OnError(String err)
 }
 void __fastcall TDebugFrm::Button1Click(TObject *Sender)
 {
-    GetScriptLoader()->GetPythonScript()->RunFunc(GetSrcModPath() + "ServerPacket.py",
-                                                "GenSrc");
+//    GetScriptLoader()->GetPythonScript()->RunFunc(GetSrcModPath() + "ServerPacket.py",
+//                                                "GenSrc");
 
-	MemoDebug->Lines->BeginUpdate();
-	MemoDebug->Lines->Add("==================================================");
-	MemoDebug->Lines->AddStrings(GetWriteStr());
-	MemoDebug->Lines->EndUpdate();
+//	MemoDebug->Lines->BeginUpdate();
+//	MemoDebug->Lines->Add("==================================================");
+//	MemoDebug->Lines->AddStrings(GetWriteStr());
+//	MemoDebug->Lines->EndUpdate();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TDebugFrm::FormCreate(TObject *Sender)
 {
-    GetScriptLoader()->GetPythonScript()->fpPythonError = OnError;
-    //初始化脚本
-    GetScriptLoader()->GetPythonScript()->LoadFromFile(GetSrcModPath() + "ServerPacket.py");
+//    GetScriptLoader()->GetPythonScript()->fpPythonError = OnError;
+//    //初始化脚本
+//    GetScriptLoader()->GetPythonScript()->LoadFromFile(GetSrcModPath() + "ServerPacket.py");
 }
 //---------------------------------------------------------------------------
 

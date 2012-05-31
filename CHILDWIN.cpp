@@ -310,7 +310,10 @@ void __fastcall TMDIChild::actSetToGBExecute(TObject *Sender)
 	ParseData();
 }
 //---------------------------------------------------------------------------
-
+void			TMDIChild::GotoPosition(int pos)
+{
+	m_HexEditor->SelStart = pos;
+}
 
 void			TMDIChild::ParseData(bool gotoPos)
 {
@@ -332,11 +335,11 @@ void			TMDIChild::ParseData(bool gotoPos)
 	{
 		if(m_bFastParseMode)
 		{
-			m_HexEditor->GotoPosition(m_FastParsePos);
+			GotoPosition(m_FastParsePos);
 		}
 		else
 		{
-			m_HexEditor->GotoPosition(m_HexEditor->SelStart);
+			GotoPosition(m_HexEditor->SelStart);
 		}
     }
 }
@@ -531,7 +534,7 @@ void __fastcall TMDIChild::tvParseTreeClick(TObject *Sender)
 
 	if(selRect.SelStart < m_HexEditor->DataSize)
 	{
-		m_HexEditor->GotoPosition(selRect.SelStart);
+		GotoPosition(selRect.SelStart);
 	}
 
 	
@@ -690,7 +693,7 @@ void __fastcall TMDIChild::actGoToNextExecute(TObject *Sender)
         tagSelRect	selRect;
         if(GetTreeSelRect(selRect) == false)
             return;
-        m_HexEditor->GotoPosition(selRect.SelStart);
+        GotoPosition(selRect.SelStart);
 
 		edtCurParseCount->Value = m_ParseListHistory.size();
 	}
@@ -891,7 +894,7 @@ void __fastcall 	TMDIChild::FastParseExecute(TObject *Sender)
 	if(selMenu->Caption == "-")
 		return;
 
-	if(typeName.AnsiPos("["))
+	if(typeName.Pos("["))
 		typeName = LeftString(typeName, "[");
 
 	ClassData * curClass = GetCurParseClass();
@@ -927,7 +930,7 @@ void __fastcall 	TMDIChild::FastParseExecute(TObject *Sender)
     tagSelRect	selRect;
     if(GetTreeSelRect(selRect) == false)
 		return;
-    m_HexEditor->GotoPosition(selRect.SelStart + selRect.SelLength);
+	GotoPosition(selRect.SelStart + selRect.SelLength);
 }
 
 ClassData	*		TMDIChild::GetCurParseClass()
@@ -1066,7 +1069,7 @@ void			TMDIChild::ChangeNodeName(ParseTreeNode * curParseTree, bool needRefresh,
             curName = curParseTree->GetClassMember()->GetComment();
         }
                          
-		if(curName.AnsiPos("["))
+		if(curName.Pos("["))
 		{
 			//是数组中的一个
 			ParseTreeNode * parent = curParseTree->GetParent();
@@ -1148,7 +1151,7 @@ void __fastcall TMDIChild::actSaveFileExecute(TObject *Sender)
 	{
 		if(InputQuery("输入文件名(不要加后缀)", "输入保存的文件名(不要加后缀)", fileName))
 		{
-			if(fileName.AnsiPos("."))
+			if(fileName.Pos("."))
 				fileName = LeftString(fileName, ".");
 			fileName += ".eggxp";
 			m_WorkSpace->SetFileName(fileName);
@@ -1359,7 +1362,7 @@ void __fastcall TMDIChild::actReNameStructExecute(TObject *Sender)
 
 void __fastcall TMDIChild::actFindExecute(TObject *Sender)
 {
-    String result = SearchFrm->GetSearchResult();
+    AnsiString result = SearchFrm->GetSearchResult();
     if(result == "")
         return;
 
@@ -1373,7 +1376,7 @@ void __fastcall TMDIChild::actFindExecute(TObject *Sender)
         return;
     }
 
-    String  buffer;
+    AnsiString  buffer;
     buffer.SetLength(result.Length());
     int len = HexStrToBin(buffer.c_str(), result);
 
@@ -1451,7 +1454,7 @@ void __fastcall TMDIChild::actOpenPluginExecute(TObject *Sender)
         return;
     }
 
-    String openFileName = GetAppPath() + EX_PLUGIN_DIR + exePlug->ExeName;
+    AnsiString openFileName = GetAppPath() + EX_PLUGIN_DIR + exePlug->ExeName;
     ShellExecute(NULL, "open", openFileName.c_str(), NULL, NULL, SW_SHOWNORMAL);    
 }
 
@@ -1558,7 +1561,7 @@ void __fastcall TMDIChild::actWriteExecute(TObject *Sender)
     if(InputQuery("输入值", "输入值", value) == false)
         return;
 
-    m_HexEditor->BeginUpdate();
+//    m_HexEditor->BeginUpdate();
     char	*pointer = m_HexEditor->GetFastPointer(0, m_HexEditor->DataSize);
     int dataSize = m_HexEditor->DataSize;
     int pos = selRect.SelStart;
@@ -1588,7 +1591,7 @@ void __fastcall TMDIChild::actWriteExecute(TObject *Sender)
 	//插入数据
     if(pos + nodeSize > dataSize)
     {
-        String  buffer;
+        AnsiString  buffer;
         buffer.SetLength(pos + nodeSize - dataSize);
         memset(buffer.c_str(), '\0', buffer.Length());
 		m_HexEditor->InsertBuffer(buffer.c_str(), buffer.Length(), selRect.SelStart, "insert", false);
@@ -1612,7 +1615,7 @@ void __fastcall TMDIChild::actWriteExecute(TObject *Sender)
     }
     m_HexEditor->SelStart = m_LastPos;
     ParseData(false);
-    m_HexEditor->EndUpdate();
+//    m_HexEditor->EndUpdate();
 }
 //---------------------------------------------------------------------------
 

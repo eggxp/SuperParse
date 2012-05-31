@@ -377,7 +377,7 @@ void __fastcall TMainForm::actSetCommentExecute(TObject *Sender)
             return;
 
         String comment = GetWorkSpaceManager()->GetWorkSpace(index)->GetComment();
-        if(InputQuery("ÊäÈë×¢ÊÍ", "ÊäÈë×¢ÊÍ", comment))
+        if(InputQuery(L"ÊäÈë×¢ÊÍ", L"ÊäÈë×¢ÊÍ", comment))
         {
             GetWorkSpaceManager()->SetWorkSpaceComment(index, comment);
         }

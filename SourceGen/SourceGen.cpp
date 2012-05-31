@@ -253,7 +253,7 @@ int					SourceGen::ReadModal(int lineNum, int & readLength)
 		{
 			if(m_SrcFileName == gDataInterfaceSrc)
 			{
-				if(m_CurParseClass->GetMemberData(i)->GetName().LowerCase().AnsiPos("unknown"))
+				if(m_CurParseClass->GetMemberData(i)->GetName().LowerCase().Pos("unknown"))
 				{
 					//特殊处理, 输出数据接口的时候, 有Unknown的不输出
 					continue;
@@ -293,7 +293,7 @@ int					SourceGen::ReadModal(int lineNum, int & readLength)
 	{
         if(ContainStr(line, gFileComment))
         {
-            line = ReplaceStr(line, gFileComment, GetCommentStr(m_CurWorkSpace->GetComment()));
+            line = Strutils::ReplaceStr(line, gFileComment, GetCommentStr(m_CurWorkSpace->GetComment()));
         }
         
 		if(m_CurParseClass == NULL)
@@ -322,22 +322,22 @@ int					SourceGen::ReadModal(int lineNum, int & readLength)
 		{
 			if(ContainStr(line, gClassComment))
 			{
-				line = ReplaceStr(line, gClassComment, GetCommentStr(m_CurParseClass->GetComment()));
+				line = Strutils::ReplaceStr(line, gClassComment, GetCommentStr(m_CurParseClass->GetComment()));
 			}
 
 			if(ContainStr(line, gClassName))
 			{
-				line = ReplaceStr(line, gClassName, m_CurParseClass->GetName());
+				line = Strutils::ReplaceStr(line, gClassName, m_CurParseClass->GetName());
 			}
 
 			if(ContainStr(line, gSmallClassName))
 			{
-				line = ReplaceStr(line, gSmallClassName, GetSmallClassName(m_CurParseClass->GetName()));
+				line = Strutils::ReplaceStr(line, gSmallClassName, GetSmallClassName(m_CurParseClass->GetName()));
 			}
 
             if(ContainStr(line, gSetHeadStr))
             {
-                line = ReplaceStr(line, gSetHeadStr, GetSetHeadFunc());
+                line = Strutils::ReplaceStr(line, gSetHeadStr, GetSetHeadFunc());
             }
 
             if(ContainStr(line, gMemberKeyName))
@@ -351,20 +351,20 @@ int					SourceGen::ReadModal(int lineNum, int & readLength)
                         break;
                     }
                 }
-                line = ReplaceStr(line, gMemberKeyName, keyName);
+                line = Strutils::ReplaceStr(line, gMemberKeyName, keyName);
             }
 
             if(ContainStr(line, gStoreProcName))
             {
-                line = ReplaceStr(line, gStoreProcName, GetStoreProcByClassName(m_CurParseClass->GetName()));
+                line = Strutils::ReplaceStr(line, gStoreProcName, GetStoreProcByClassName(m_CurParseClass->GetName()));
             }
             if(ContainStr(line, gADOStoreSqlSelectName))
             {
-                line = ReplaceStr(line, gADOStoreSqlSelectName, GetADOStoreSqlSelectName());
+                line = Strutils::ReplaceStr(line, gADOStoreSqlSelectName, GetADOStoreSqlSelectName());
             }
             if(ContainStr(line, gADOStoreSqlWhereName))
             {
-                line = ReplaceStr(line, gADOStoreSqlWhereName, GetADOStoreSqlWhereName());
+                line = Strutils::ReplaceStr(line, gADOStoreSqlWhereName, GetADOStoreSqlWhereName());
             }
 		}
 
@@ -372,95 +372,95 @@ int					SourceGen::ReadModal(int lineNum, int & readLength)
 		{
 			if(ContainStr(line, gMemberType))
 			{
-				line = ReplaceStr(line, gMemberType, m_CurClassMember->GetType());
+				line = Strutils::ReplaceStr(line, gMemberType, m_CurClassMember->GetType());
 			}
 
 			if(ContainStr(line, gMemberName))
 			{
-				line = ReplaceStr(line, gMemberName, m_CurClassMember->GetFullName());
+				line = Strutils::ReplaceStr(line, gMemberName, m_CurClassMember->GetFullName());
 			}
             
             if(ContainStr(line, gMemberRealName))
 			{
-				line = ReplaceStr(line, gMemberRealName, m_CurClassMember->GetName());
+				line = Strutils::ReplaceStr(line, gMemberRealName, m_CurClassMember->GetName());
 			}
 
 			if(ContainStr(line, gMemberComment))
 			{
-				line = ReplaceStr(line, gMemberComment, GetCommentStr(m_CurClassMember));
+				line = Strutils::ReplaceStr(line, gMemberComment, GetCommentStr(m_CurClassMember));
 			}
 
 			if(ContainStr(line, gMemberReadDataType))
 			{
 				tagNodeType type;
 				GetReadDataType(m_CurClassMember, type);
-				line = ReplaceStr(line, gMemberReadDataType, type.Type);
-				line = ReplaceStr(line, gMemberReadDataName, type.Name);
+				line = Strutils::ReplaceStr(line, gMemberReadDataType, type.Type);
+				line = Strutils::ReplaceStr(line, gMemberReadDataName, type.Name);
 			}
 
 			if(ContainStr(line, gMemberReadDataFunc))
 			{
-				line = ReplaceStr(line, gMemberReadDataFunc, GetGenFunc(m_CurClassMember, "ReadData"));
+				line = Strutils::ReplaceStr(line, gMemberReadDataFunc, GetGenFunc(m_CurClassMember, "ReadData"));
 			}
 
 			if(ContainStr(line, gMemberClearFunc))
 			{
-				line = ReplaceStr(line, gMemberClearFunc, GetGenFunc(m_CurClassMember, "Clear"));
+				line = Strutils::ReplaceStr(line, gMemberClearFunc, GetGenFunc(m_CurClassMember, "Clear"));
 			}
 
 			if(ContainStr(line, gMemberGetLengthFunc))
 			{
-				line = ReplaceStr(line, gMemberGetLengthFunc, GetGenFunc(m_CurClassMember, "GetLength"));
+				line = Strutils::ReplaceStr(line, gMemberGetLengthFunc, GetGenFunc(m_CurClassMember, "GetLength"));
 			}
 
 			if(ContainStr(line, gMemberWriteBufferFunc))
 			{
-				line = ReplaceStr(line, gMemberWriteBufferFunc, GetGenFunc(m_CurClassMember, "WriteBuffer"));
+				line = Strutils::ReplaceStr(line, gMemberWriteBufferFunc, GetGenFunc(m_CurClassMember, "WriteBuffer"));
 			}
 
 			if(ContainStr(line, gMemberGetFunc))
 			{
-				line = ReplaceStr(line, gMemberGetFunc, GetGenFunc(m_CurClassMember, "GetFunc"));
+				line = Strutils::ReplaceStr(line, gMemberGetFunc, GetGenFunc(m_CurClassMember, "GetFunc"));
 			}
 
 			if(ContainStr(line, gMemberReturnGetFunc))
 			{
-				line = ReplaceStr(line, gMemberReturnGetFunc, GetGenFunc(m_CurClassMember, "GetReturnFunc"));
+				line = Strutils::ReplaceStr(line, gMemberReturnGetFunc, GetGenFunc(m_CurClassMember, "GetReturnFunc"));
 			}
 
 			if(ContainStr(line, gADOStoreCreateFunc))
 			{
-				line = ReplaceStr(line, gADOStoreCreateFunc, GetGenFunc(m_CurClassMember, "ADOStoreCreate"));
+				line = Strutils::ReplaceStr(line, gADOStoreCreateFunc, GetGenFunc(m_CurClassMember, "ADOStoreCreate"));
 			}
 
 			if(ContainStr(line, gADOStoreReadFunc))
 			{
-				line = ReplaceStr(line, gADOStoreReadFunc, GetGenFunc(m_CurClassMember, "ADOStoreRead"));
+				line = Strutils::ReplaceStr(line, gADOStoreReadFunc, GetGenFunc(m_CurClassMember, "ADOStoreRead"));
 			}
 
             if(ContainStr(line, gMemberDataSetCreateName))
 			{
-				line = ReplaceStr(line, gMemberDataSetCreateName, GetGenFunc(m_CurClassMember, "DataSetCreate"));
+				line = Strutils::ReplaceStr(line, gMemberDataSetCreateName, GetGenFunc(m_CurClassMember, "DataSetCreate"));
 			}
 
             if(ContainStr(line, gMemberADOProcName))
 			{
-				line = ReplaceStr(line, gMemberADOProcName, GetGenFunc(m_CurClassMember, "MemberADOProcName"));
+				line = Strutils::ReplaceStr(line, gMemberADOProcName, GetGenFunc(m_CurClassMember, "MemberADOProcName"));
 			}
 
             if(ContainStr(line, gDot))
 			{
-				line = ReplaceStr(line, gDot, GetDot());
+				line = Strutils::ReplaceStr(line, gDot, GetDot());
 			}
 
             if(ContainStr(line, gMemberADOProcNoOutput))
 			{
-				line = ReplaceStr(line, gMemberADOProcNoOutput, GetGenFunc(m_CurClassMember, "MemberADOProcNoOutput"));
+				line = Strutils::ReplaceStr(line, gMemberADOProcNoOutput, GetGenFunc(m_CurClassMember, "MemberADOProcNoOutput"));
 			}
 
             if(ContainStr(line, gADOQueryReadFunc))
 			{
-				line = ReplaceStr(line, gADOQueryReadFunc, GetGenFunc(m_CurClassMember, "ADOQueryReadFunc"));
+				line = Strutils::ReplaceStr(line, gADOQueryReadFunc, GetGenFunc(m_CurClassMember, "ADOQueryReadFunc"));
 			}
 		}
 
@@ -623,7 +623,7 @@ String				SourceGen::GetGenFunc(IClassMember * curMember, String genType)
 
 String			SourceGen::GetSmallClassName(String className)
 {
-	if(className.AnsiPos("tag") == 1)
+	if(className.Pos("tag") == 1)
 	{
 		className = className.Delete(1, 3);
 	}

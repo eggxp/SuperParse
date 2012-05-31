@@ -14,7 +14,7 @@ int			ContainStr(String from, String to)
 {
 	String	fromLowerCase = from.LowerCase();
 	String	toLowerCase = to.LowerCase();
-   	return	fromLowerCase.AnsiPos(toLowerCase);
+   	return	fromLowerCase.Pos(toLowerCase);
 }
 
 

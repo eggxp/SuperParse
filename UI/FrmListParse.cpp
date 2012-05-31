@@ -115,7 +115,7 @@ void __fastcall TListParseFrm::btStartClick(TObject *Sender)
 	m_TreeToClientData.StartParse(edtParseCount->Value, edtParseCount);
 	RefreshList();
 
-	int result = Application->MessageBox("是否继续生成XML文件?","生成文件",MB_OKCANCEL);
+	int result = Application->MessageBox(L"是否继续生成XML文件?",L"生成文件",MB_OKCANCEL);
 	if(result == IDCANCEL)
 	{
 		return;
@@ -150,7 +150,7 @@ void __fastcall TListParseFrm::btOutputClick(TObject *Sender)
 	}
 
 	//执行选择的文件
-    String execCmd = ExtractFilePath(Application->ExeName) + "xmlist.exe " + "\"" + SaveDialog1->FileName + "\"";
+    AnsiString execCmd = ExtractFilePath(Application->ExeName) + "xmlist.exe " + "\"" + SaveDialog1->FileName + "\"";
     WinExec( execCmd.c_str(), SW_MAXIMIZE);
 }
 //---------------------------------------------------------------------------

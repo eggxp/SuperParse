@@ -18,16 +18,17 @@ __fastcall TSearchFrm::TSearchFrm(TComponent* Owner)
 
 String      TSearchFrm::GetSearchResult()
 {
-    String result;
-    if(this->ShowModal() == mrOk)
-    {
-        if(cbSearchMode->ItemIndex == 0)
-        {
-            result = edtSearchContent->Text;
-        }
-        else
-        {
-            result = BinToStr(edtSearchContent->Text.c_str(), edtSearchContent->Text.Length());
+	AnsiString result;
+	AnsiString content_text = edtSearchContent->Text;
+	if(this->ShowModal() == mrOk)
+	{
+		if(cbSearchMode->ItemIndex == 0)
+		{
+			result = content_text;
+		}
+		else
+		{
+			result = BinToStr(content_text.c_str(), content_text.Length());
         }
         return  result;
     }

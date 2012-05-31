@@ -178,8 +178,8 @@ WorkPackHead		*		WorkPacks::FindWorkPack(String head)
 
 int 	ComparWorkPackName(WorkPackHead *Item1, WorkPackHead *Item2)
 {
-	String Dis1 =  Item1->m_Head;
-	String Dis2 =  Item2->m_Head;
+	AnsiString Dis1 =  Item1->m_Head;
+	AnsiString Dis2 =  Item2->m_Head;
 
 	return	Dis1.AnsiCompare(Dis2);
 }
@@ -239,8 +239,8 @@ void			WorkSpaceManager::Clear()
 
 int 	ComparWorkSpaceName(WorkSpace *Item1, WorkSpace *Item2)
 {
-	String Dis1 =  Item1->GetFullName();
-	String Dis2 =  Item2->GetFullName();
+	AnsiString Dis1 =  Item1->GetFullName();
+	AnsiString Dis2 =  Item2->GetFullName();
 
 	return	Dis1.AnsiCompare(Dis2);
 }
@@ -356,7 +356,7 @@ void			WorkSpaceManager::LoadFromFile(String fileName)
     m_FilePath = ExtractFilePath(m_FileName);
 
     loadStr->LoadFromFile(fileName);
-    if(!loadStr->Text.AnsiPos("==LibStart=="))
+    if(!loadStr->Text.Pos("==LibStart=="))
     {
         LoadFromFileNew(fileName);
         return;
@@ -550,7 +550,7 @@ int				WorkSpaceManager::TextSelect(String	text)
 	for(int i=0; i<m_WorkSpace.Count(); i++)
 	{
 		curName = m_WorkSpace[i]->GetFullName().LowerCase();
-		if(curName.AnsiPos(text.LowerCase()) != 0)
+		if(curName.Pos(text.LowerCase()) != 0)
 		{
 			index = i;
             curWorkSpace = m_WorkSpace[i];

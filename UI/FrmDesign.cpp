@@ -5,7 +5,7 @@
 
 #include "FrmDesign.h"
 #include "FrmSourceGenDesign.h"
-#include "ScriptLoader.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -109,7 +109,7 @@ void __fastcall TDesignFrm::btAddHeadDefClick(TObject *Sender)
 void __fastcall TDesignFrm::btDefHeadDefClick(TObject *Sender)
 {
     SetBeginUpdate();
-    int result = Application->MessageBox("这个操作会删除所有的子文件, 是否继续?","删除询问",MB_OKCANCEL);
+    int result = Application->MessageBox(L"这个操作会删除所有的子文件, 是否继续?",L"删除询问",MB_OKCANCEL);
     if(result == IDCANCEL)
     {
         return;
@@ -134,7 +134,7 @@ void __fastcall TDesignFrm::btDefHeadDefClick(TObject *Sender)
 
 void __fastcall TDesignFrm::btClearHeadDefClick(TObject *Sender)
 {
-    int result = Application->MessageBox("这个清空动作会清空所有文件!  是否继续?","删除询问",MB_OKCANCEL);
+    int result = Application->MessageBox(L"这个清空动作会清空所有文件!  是否继续?",L"删除询问",MB_OKCANCEL);
     if(result == IDCANCEL)
     {
         return;
@@ -180,7 +180,7 @@ void __fastcall TDesignFrm::btAddSubHeadClick(TObject *Sender)
         if(fileName == "")
             return;
 
-        if(fileName.AnsiPos("."))
+        if(fileName.Pos("."))
             fileName = LeftString(fileName, ".");
         fileName += ".eggxp";
 
@@ -274,7 +274,7 @@ void __fastcall TDesignFrm::btDeleteSubHeadClick(TObject *Sender)
 {
     String fileName = vleSubHeadDef->Keys[vleSubHeadDef->Row];
 
-    int result = Application->MessageBox(FormatStr("当真要删除文件 : %s(此操作不可恢复)", fileName).c_str(),"删除询问",MB_OKCANCEL);
+    int result = Application->MessageBox(FormatStr(L"当真要删除文件 : %s(此操作不可恢复)", fileName).c_str(),L"删除询问",MB_OKCANCEL);
     if(result == IDCANCEL)
     {
         return;
@@ -339,13 +339,13 @@ void __fastcall TDesignFrm::vleSubHeadDefKeyDown(TObject *Sender, WORD &Key,
 
 void __fastcall TDesignFrm::btOutputSourceClick(TObject *Sender)
 {
-    if(SaveDialog1->Execute())
-    {
-        GetWriteStr()->Clear();
-        GetScriptLoader()->GetPythonScript()->RunFunc(GetSrcModPath() + "ServerPacket.py",
-                                                "GenSrc");
-        GetWriteStr()->SaveToFile(SaveDialog1->FileName);
-    }
+//    if(SaveDialog1->Execute())
+//    {
+//        GetWriteStr()->Clear();
+//        GetScriptLoader()->GetPythonScript()->RunFunc(GetSrcModPath() + "ServerPacket.py",
+//                                                "GenSrc");
+//        GetWriteStr()->SaveToFile(SaveDialog1->FileName);
+//    }
 }
 //---------------------------------------------------------------------------
 

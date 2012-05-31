@@ -22,7 +22,7 @@ void		TEditFileDescribeFrm::EditFileStructDescribe(FileStruct	*	curFileStruct)
 	edtFileDescribe->Text = m_FileStruct->GetDescribe();
 	edtCreateDate->Text = m_FileStruct->GetDateTime();
 	memRemark->Text = m_FileStruct->GetRemark();
-	edtKey->Text = IntToStr(m_FileStruct->GetKey());
+	edtKey->Text = IntToStr(int(m_FileStruct->GetKey()));
 
 	if(this->ShowModal() == mrOk)
 	{

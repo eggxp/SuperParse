@@ -13,6 +13,7 @@
 
 #define     SETUP_INI_FILE      GetAppPath() + "LocalConfig.ini"
 
+
 void		SetAppPath(String appPath);
 String		GetAppPath();
 String		GetSrcModPath();

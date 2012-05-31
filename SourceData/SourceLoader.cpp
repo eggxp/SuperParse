@@ -69,7 +69,7 @@ int					SourceLoader::ReadLine(int lineIndex, tagReadStruct &result)
 	String line  = m_SourceData->Strings[lineIndex];
 
 	//·Ö¸îÖµºÍ×¢ÊÍ
-	int	commentStart = line.AnsiPos("//");
+	int	commentStart = line.Pos("//");
 	String	values = line;
 	String	comment;
 	if(commentStart != 0)
@@ -82,7 +82,7 @@ int					SourceLoader::ReadLine(int lineIndex, tagReadStruct &result)
 		comment = comment.Delete(1,1);
 	}
 
-	if(values.AnsiPos("{") || values.AnsiPos("}") ||
+	if(values.Pos("{") || values.Pos("}") ||
 				(comment == "" && values == ""))
 	{
 		//Óï·¨·ûºÅ
@@ -90,7 +90,7 @@ int					SourceLoader::ReadLine(int lineIndex, tagReadStruct &result)
 	}
 
 	//1. É¾³ý¿Õ¸ñ
-	values = ReplaceStr(values, '\t', ' ');
+	values = Strutils::ReplaceStr(values, '\t', ' ');
 	while(values.Length() && values.c_str()[0] == ' ')
 	{
 		values = values.Delete(1, 1);
@@ -131,8 +131,8 @@ int					SourceLoader::ReadLine(int lineIndex, tagReadStruct &result)
 
 	if(parseStr->Count>1)
 	{
-		String resultName = ReplaceStr(parseStr->Strings[1], ";", "");
-		if(resultName.AnsiPos("[") == 0)
+		String resultName = Strutils::ReplaceStr(parseStr->Strings[1], ";", "");
+		if(resultName.Pos("[") == 0)
 			result.Name = resultName;
 		else
 		{

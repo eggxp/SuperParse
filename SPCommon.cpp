@@ -85,7 +85,7 @@ int			OpenFileCheck(String fileName)
 	int size = GetFileSize(fileName);
 	if(size/1024/1024 > 100)
 	{
-		int result = Application->MessageBox("文件大于100M,是否一定要打开?","打开文件",MB_OKCANCEL);
+		int result = Application->MessageBox(L"文件大于100M,是否一定要打开?",L"打开文件",MB_OKCANCEL);
 		if(result == IDCANCEL)
 		{
 			return 0;
@@ -128,7 +128,7 @@ String		GetLangText(char *lpData, int len)
 	}
 	else if(gLangModule == lmUnicode)
 	{
-		String	desBuffer;
+		AnsiString	desBuffer;
 		desBuffer.SetLength(len);                
 		int size = UnicodeToUtf8(desBuffer.c_str(), (wchar_t *)lpData, len);
 		return	tlbm_UTF8ToAnsi(desBuffer.c_str(), size);

@@ -27,6 +27,7 @@
 #include "SearchTool.h"
 #include "dcrHexEditor.hpp"
 #include <stack>
+#include <vcl\Clipbrd.hpp>
 using namespace std;
 
 class	ParseTree;
@@ -40,9 +41,9 @@ struct	tagSelRect
 
 struct  tagExePlugins
 {
-    String          Name;
-    String          ClassName;
-    String          ExeName;
+	AnsiString          Name;
+	AnsiString          ClassName;
+    AnsiString          ExeName;
     int             RecvType;
 };
 
@@ -292,7 +293,8 @@ private:
     AList<tagExePlugins>    *   m_Plugins;
     void                        InitPlugins();
     void __fastcall actOpenPluginExecute(TObject *Sender);
-    void __fastcall actSendToPluginTestExecute(TObject *Sender);
+	void __fastcall actSendToPluginTestExecute(TObject *Sender);
+	void			GotoPosition(int pos);
 
 public:
 	virtual __fastcall TMDIChild(TComponent *Owner);

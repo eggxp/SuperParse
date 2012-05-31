@@ -195,7 +195,7 @@ void				ParseTreeNode::UnPackData(char *lpData, int Len, int& pos, int Key)
 
 			if(arrayVar > MAX_ARRAY_VAR)
 			{
-				int result = Application->MessageBox(FormatStr("动态数组长度大于%d个, 是否继续解析?", MAX_ARRAY_VAR).c_str(),"解析确认",MB_OKCANCEL);
+				int result = Application->MessageBox(FormatStr(L"动态数组长度大于%d个, 是否继续解析?", MAX_ARRAY_VAR).c_str(),L"解析确认",MB_OKCANCEL);
 				if(result == IDCANCEL)
 				{
 					m_iParseState = 1;

@@ -31,7 +31,7 @@ void		AllSourceGen::SaveSource(WorkSpaceManager	*	workSpaceManager,
 
 	m_AllClassList->Clear();
 	String	fileRealName = ExtractFileName(fileName);
-	if(fileRealName.AnsiPos("."))
+	if(fileRealName.Pos("."))
 		fileRealName = LeftString(fileRealName, ".");
 	auto_ptr<TStringList>	saveStr(new	TStringList);
 	saveStr->Add("//---------------------------------------------------------------------------");

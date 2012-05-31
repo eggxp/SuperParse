@@ -7,6 +7,7 @@
 #include <vcl.h>
 #include "AList.h"
 
+
 //½âÎö½á¹û
 struct	tagParseResult
 {

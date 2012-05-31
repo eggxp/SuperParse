@@ -26,7 +26,8 @@ bool		TxtToListLoader::IsUnicode(TStringList * inputList)
 	if(inputList->Strings[0].Length() > 2)
 	{
 		int pos = 0;
-		WORD	result = ReadWORD(inputList->Strings[0].c_str(), pos);
+		AnsiString read_content = inputList->Strings[0];
+		WORD	result = ReadWORD(read_content.c_str(), pos);
 		if(result == 0xFFFE)
 			return	true;
 
@@ -42,7 +43,7 @@ void		TxtToListLoader::LoadTxtFile(String	fileName, String splitTable, IClassDat
 
 	if(m_ModeClass == NULL)
 	{
-		int result = Application->MessageBox("模板类为空, 读取可能不正确, 是否继续读取?","读取询问",MB_OKCANCEL);
+		int result = Application->MessageBox(L"模板类为空, 读取可能不正确, 是否继续读取?",L"读取询问",MB_OKCANCEL);
 		if(result == IDCANCEL)
 		{
 			return;
@@ -62,7 +63,7 @@ void		TxtToListLoader::LoadTxtFile(String	fileName, String splitTable, IClassDat
 		loadStr->Clear();
 		for(int i=0; i<loadWideStr->Count; i++)
 		{
-			loadStr->Add(WideCharToString(loadWideStr->Strings[i]));
+			loadStr->Add(WideCharToString(loadWideStr->Strings[i].c_bstr()));
 		}
 	}
 

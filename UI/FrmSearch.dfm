@@ -36,7 +36,6 @@ object SearchFrm: TSearchFrm
     Width = 203
     Height = 21
     Style = csDropDownList
-    ItemHeight = 13
     ItemIndex = 0
     TabOrder = 1
     Text = #25628#32034'16'#36827#21046#23383#31526#20018

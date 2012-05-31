@@ -54,19 +54,20 @@ void __fastcall TSearchFilesFrm::btBeginSearchClick(TObject *Sender)
 
 String			TSearchFilesFrm::GetSearchData()
 {
-	String data;
+	AnsiString data;
+	AnsiString content_text = edtSearchContent->Text;
 
 	if(cbSearchMode->ItemIndex == 0)
 	{
-		data = edtSearchContent->Text;
+		data = content_text;
 	}
 	else if(cbSearchMode->ItemIndex == 1)
 	{
-		data = BinToStr(edtSearchContent->Text.c_str(), edtSearchContent->Text.Length());
+		data = BinToStr(content_text.c_str(), content_text.Length());
 	}
 	else if(cbSearchMode->ItemIndex == 2)
 	{
-		DWORD num = edtSearchContent->Text.ToInt();
+		DWORD num = content_text.ToInt();
 		data.SetLength(4);
 		int pos = 0;
 		WriteDWORD(data.c_str(), pos, num);
@@ -74,7 +75,7 @@ String			TSearchFilesFrm::GetSearchData()
 	}
 	else if(cbSearchMode->ItemIndex == 3)
 	{
-		WORD num = edtSearchContent->Text.ToInt();
+		WORD num = content_text.ToInt();
 		data.SetLength(2);
 		int pos = 0;
 		WriteWORD(data.c_str(), pos, num);
@@ -82,7 +83,7 @@ String			TSearchFilesFrm::GetSearchData()
 	}
 	else if(cbSearchMode->ItemIndex == 4)
 	{
-		BYTE num = edtSearchContent->Text.ToInt();
+		BYTE num = content_text.ToInt();
 		data.SetLength(1);
 		int pos = 0;
 		WriteBYTE(data.c_str(), pos, num);
