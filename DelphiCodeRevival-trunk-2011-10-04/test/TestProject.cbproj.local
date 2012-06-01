@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012/06/01 13:21:39.086.cpp,C:\Users\game-netease\Documents\RAD Studio\Projects\Unit1.cpp=E:\Projects\SuperParse\DelphiCodeRevival-trunk-2011-10-04\test\test.cpp</Transaction>
+    <Transaction>2012/06/01 13:21:39.086.h,C:\Users\game-netease\Documents\RAD Studio\Projects\Unit1.h=E:\Projects\SuperParse\DelphiCodeRevival-trunk-2011-10-04\test\test.h</Transaction>
+    <Transaction>2012/06/01 13:21:39.086.dfm,C:\Users\game-netease\Documents\RAD Studio\Projects\Unit1.dfm=E:\Projects\SuperParse\DelphiCodeRevival-trunk-2011-10-04\test\test.dfm</Transaction>
+    <Transaction>2012/06/01 13:21:44.407.cbproj,C:\Users\game-netease\Documents\RAD Studio\Projects\Project1.cbproj=E:\Projects\SuperParse\DelphiCodeRevival-trunk-2011-10-04\test\TestProject.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>
