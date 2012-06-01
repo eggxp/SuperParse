@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{18308CBB-3538-4FE4-ABE0-79D021CBFD6B}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="src\packages\dcrHexEditor_BCB6.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="test\TestProject.cbproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="dcrHexEditor_BCB6">
+			<MSBuild Projects="src\packages\dcrHexEditor_BCB6.cbproj"/>
+		</Target>
+		<Target Name="dcrHexEditor_BCB6:Clean">
+			<MSBuild Targets="Clean" Projects="src\packages\dcrHexEditor_BCB6.cbproj"/>
+		</Target>
+		<Target Name="dcrHexEditor_BCB6:Make">
+			<MSBuild Targets="Make" Projects="src\packages\dcrHexEditor_BCB6.cbproj"/>
+		</Target>
+		<Target Name="TestProject">
+			<MSBuild Projects="test\TestProject.cbproj"/>
+		</Target>
+		<Target Name="TestProject:Clean">
+			<MSBuild Targets="Clean" Projects="test\TestProject.cbproj"/>
+		</Target>
+		<Target Name="TestProject:Make">
+			<MSBuild Targets="Make" Projects="test\TestProject.cbproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="dcrHexEditor_BCB6;TestProject"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="dcrHexEditor_BCB6:Clean;TestProject:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="dcrHexEditor_BCB6:Make;TestProject:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
