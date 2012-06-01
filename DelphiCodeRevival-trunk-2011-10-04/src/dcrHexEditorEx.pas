@@ -57,7 +57,7 @@
 
   - Heybirder for reporting that delphi 6 has not TStringList.ValueFromIndex property<br><br>
 
-  - Magnus Flysjö for his Delphi2006 package and the updated MPDELVER.INC file<br><br>
+  - Magnus Flysj?for his Delphi2006 package and the updated MPDELVER.INC file<br><br>
 
   - Patrick Kolla for OwnerData, Delphi XE, and maintaining the LaunchPad project<br><br>
 
@@ -906,6 +906,7 @@ var
    LmefTemp: TMetaFile;
    LmstData: TMemoryStream;
    LIntLoop: integer;
+   LTempResult: AnsiString;
 begin
    Result := '';
 
@@ -921,7 +922,10 @@ begin
    end
    else
       case Format of
-         CF_TEXT, CF_OEMTEXT: Result := PChar(PData);
+         CF_TEXT, CF_OEMTEXT: begin
+               LTempResult := PAnsiChar(PData);
+               Result := LTempResult;
+               end;
          CF_UNICODETEXT: begin
                LWStrTemp := PWideChar(PData);
                if UnicodeBigEndian then begin
@@ -1502,6 +1506,7 @@ function TMPHexEditorEx.InsertOLEData(const dataObj: IDataObject; const grfKeySt
 var
    LRecStg: TStgMedium;
    LStrData, LStrBin: string;
+   LAnsiStrData: AnsiString;
    LIntData, LIntPos: Int64;
    LIntLoop: integer;
    LszBuf: array [0 .. MAX_PATH] of char;
@@ -1511,6 +1516,7 @@ var
 begin
    Result   := E_FAIL;
    LStrData := '';
+   LAnsiStrData := '';
    LIntData := 0;
    WaitCursor;
    try
@@ -1561,12 +1567,14 @@ begin
                      end;
                      try
                         LStrData := GetSomeData(LPtrLock, LRecStg.HGlobal, FOleFormat[Operation], LIntGlobalSize, UnicodeBigEndian);
+                        LAnsiStrData := LStrData;
+                        LIntData := Length(LStrData);
                         if LStrData <> '' then begin
-                           LIntData := Length(LStrData);
+                           LIntData := Length(LAnsiStrData);
                            if (FOleFormat[Operation] in [CF_TEXT, CF_OEMTEXT]) and (Operation = oleClipboard) and FClipboardAsHexText then begin
                               // convert hex text to data
-                              SetLength(LStrBin, Length(LStrData));
-                              ConvertHexToBin(@LStrData[1], @LStrBin[1], LIntData, SwapNibbles, LIntData);
+                              SetLength(LStrBin, LIntData);
+                              ConvertHexToBin(@LAnsiStrData[1], @LStrBin[1], LIntData, SwapNibbles, LIntData);
                               LStrData := Copy(LStrBin, 1, LIntData);
                            end;
                            Result := S_OK;
@@ -1615,7 +1623,12 @@ begin
                         end;
                      end;
                   end;
-               oleClipboard: PasteData(PChar(LStrData), LIntData, UNDO_PASTECB);
+               oleClipboard: begin
+                 if (FClipboardAsHexText) then
+                   PasteData(PAnsiChar(LStrData), Length(LStrData), UNDO_PASTECB)
+                 else
+                   PasteData(PAnsiChar(LAnsiStrData), Length(LAnsiStrData), UNDO_PASTECB);
+               end;
             end;
          end
          else Result := E_FAIL;

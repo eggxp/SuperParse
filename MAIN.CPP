@@ -84,7 +84,7 @@ void            TMainForm::LoadExePluginIni()
 
 void __fastcall TMainForm::FormCreate(TObject *Sender)
 {
-	TabSet1->Tabs->Clear();
+ 	TabSet1->Tabs->Clear();
 
 	//初始化动作
 	GetWorkSpaceManager()->BindGUI(lvWorkSpace);

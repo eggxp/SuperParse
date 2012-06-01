@@ -20,6 +20,8 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+			<DesignOnlyPackage>false</DesignOnlyPackage>
 			<LinkPackageStatics>rtl.lib</LinkPackageStatics>
 			<IncludePath>..\;$(IncludePath)</IncludePath>
 			<BCC_PCHCache>true</BCC_PCHCache>
@@ -30,7 +32,6 @@
 			<TASM_Defines>_RTLDLL;NO_STRICT;USEPACKAGES;$(TASM_Defines)</TASM_Defines>
 			<BRCC_IncludePath>..\;..;$(BDS)\Projects;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(BRCC_IncludePath)</BRCC_IncludePath>
 			<ILINK_GenerateLibFile>true</ILINK_GenerateLibFile>
-			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
 			<BCC_IncludePath>..\;..;$(BDS)\Projects;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(BCC_IncludePath)</BCC_IncludePath>
 			<TASM_IncludePath>..\;..;$(BDS)\Projects;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(TASM_IncludePath)</TASM_IncludePath>
 			<DCC_IncludePath>.\;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\release;source;design;$(BDS)\lib\obj;$(BDS)\lib;$(RELEASELIBPATH);$(DCC_IncludePath)</DCC_IncludePath>
@@ -76,18 +77,6 @@
 			<ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath);$(ILINK_LibraryPath)</ILINK_LibraryPath>
 		</PropertyGroup>
 		<ItemGroup>
-			<CppCompile Include="dcrHexEditor_BCB6.cpp">
-				<BuildOrder>3</BuildOrder>
-				<BuildOrder>2</BuildOrder>
-			</CppCompile>
-			<DelphiCompile Include="..\dcrHexEditorReg.pas">
-				<BuildOrder>5</BuildOrder>
-				<BuildOrder>4</BuildOrder>
-			</DelphiCompile>
-			<ResFiles Include="..\dcrHexEditorReg.dcr">
-				<BuildOrder>-1</BuildOrder>
-				<BuildOrder>8</BuildOrder>
-			</ResFiles>
 			<PackageImport Include="rtl.bpi">
 				<BuildOrder>11</BuildOrder>
 				<BuildOrder>0</BuildOrder>
@@ -100,6 +89,18 @@
 				<BuildOrder>2</BuildOrder>
 				<BuildOrder>17</BuildOrder>
 			</PackageImport>
+			<CppCompile Include="dcrHexEditor_BCB6.cpp">
+				<BuildOrder>3</BuildOrder>
+				<BuildOrder>2</BuildOrder>
+			</CppCompile>
+			<DelphiCompile Include="..\dcrHexEditorReg.pas">
+				<BuildOrder>5</BuildOrder>
+				<BuildOrder>4</BuildOrder>
+			</DelphiCompile>
+			<ResFiles Include="..\dcrHexEditorReg.dcr">
+				<BuildOrder>-1</BuildOrder>
+				<BuildOrder>8</BuildOrder>
+			</ResFiles>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

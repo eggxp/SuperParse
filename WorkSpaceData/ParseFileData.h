@@ -18,6 +18,10 @@ struct tagFileStruct
 	char                            remark[FileRemarkLen];
 	DWORD							Key;
 	int                             dataLen;
+	tagFileStruct()
+	{
+		Clear();
+	}
 	int                             ReadData(char *Data, int Len = 0)
 	{
 		int Pos = 0;
