@@ -26,7 +26,7 @@ __fastcall TMainForm::TMainForm(TComponent *Owner)
 {
 	m_IsCreatingWnd = false;
 	SetAppPath(ExtractFilePath(Application->ExeName));
-	SetLangModule(lmGB);
+	SetLangModule(lmUTF8);
 
 	m_ReOpenList = new TStringList;
 
