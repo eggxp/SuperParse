@@ -164,7 +164,8 @@ __published:
     void __fastcall actOutputReadWriteAllExecute(TObject *Sender);
 private:
 	void __fastcall CreateMDIChild(WorkSpace	*	workSpace);
-    AList<tagExePlugins>        m_ExePlugins;
+	AList<tagExePlugins>        m_ExePlugins;
+	bool						m_IsCreatingWnd;
     void                        LoadExePluginIni();
 
 	TStringList				*	m_ReOpenList;		//重新打开的列表

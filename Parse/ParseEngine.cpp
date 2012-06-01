@@ -84,8 +84,16 @@ String		NormalVar::OnParse(char *lpData, int Len, int &pos, int key)
 	else	if(m_Type == "double")
 	{
 		double	result = ReadDouble(lpData, pos);
-		String date = DateTimeToStr(FloatToDateTime(result));
-		resultStr = FormatStr("%s", FloatToStr(result));
+		String date = "";
+		try
+		{
+			date = DateTimeToStr(FloatToDateTime(result));
+			resultStr = FormatStr("%s(%s)", FloatToStr(result), date);
+		}
+		catch(...)
+		{
+			resultStr = FormatStr("%s", FloatToStr(result));
+		}
 	}
 	else	if(m_Type == "DateTime")
 	{

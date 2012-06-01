@@ -14,6 +14,7 @@ object MDIChild: TMDIChild
   WindowState = wsMaximized
   OnActivate = FormActivate
   OnClose = FormClose
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
@@ -76,10 +77,6 @@ object MDIChild: TMDIChild
       TabOrder = 1
       object TabSheet1: TTabSheet
         Caption = #35299#26512#27169#24335
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Splitter5: TSplitter
           Left = 625
           Top = 0
@@ -391,12 +388,23 @@ object MDIChild: TMDIChild
           Width = 100
         end>
     end
-    object m_HexEditor: TMPHexEditor
+    object m_HexEditor: TMPHexEditorEx
       Left = 1
       Top = 1
       Width = 762
       Height = 349
       Cursor = crIBeam
+      BackupExtension = '.bak'
+      PrintOptions.MarginLeft = 20
+      PrintOptions.MarginTop = 15
+      PrintOptions.MarginRight = 25
+      PrintOptions.MarginBottom = 25
+      PrintOptions.Flags = [pfSelectionBold, pfMonochrome]
+      PrintFont.Charset = DEFAULT_CHARSET
+      PrintFont.Color = clWindowText
+      PrintFont.Height = -15
+      PrintFont.Name = 'Courier New'
+      PrintFont.Style = []
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -406,10 +414,11 @@ object MDIChild: TMDIChild
       OnClick = m_HexEditorClick
       OnMouseDown = m_HexEditorMouseDown
       OnMouseMove = m_HexEditorMouseMove
-      OnMouseUp = m_HexEditorMouseUp
       ParentFont = False
+      PopupMenu = pmHex
       TabOrder = 1
       BytesPerRow = 16
+      BytesPerColumn = 1
       Translation = tkAsIs
       OffsetFormat = '-!10:0x|'
       Colors.Background = clWindow
@@ -428,6 +437,7 @@ object MDIChild: TMDIChild
       FocusFrame = True
       DrawGridLines = False
       Version = 'october 7th, 2010; ?markus stephany, http://launchpad.net/dcr'
+      InsertMode = True
       OnChange = m_HexEditorChange
       OnDrawCell = m_HexEditorDrawCell
       BytesPerBlock = -1
@@ -599,7 +609,7 @@ object MDIChild: TMDIChild
     Left = 688
     Top = 160
     Bitmap = {
-      494C010119001D002C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010119001D00540020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000E0000000010020000000000000C0
       010000000000000000000000000000000000000000000000000000000000BDBD
       BD00CECECE00525252008C8C8C008484840073737300737373006B6B6B006B6B

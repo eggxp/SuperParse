@@ -26,6 +26,7 @@
 #include "ColorAppend.h"
 #include "SearchTool.h"
 #include "dcrHexEditor.hpp"
+#include "dcrHexEditorEx.hpp"
 #include <stack>
 #include <vcl\Clipbrd.hpp>
 using namespace std;
@@ -175,7 +176,7 @@ __published:
 	TMenuItem *N32;
 	TAction *actOpenListFromTxt;
 	TMenuItem *txt1;
-	TMPHexEditor *m_HexEditor;
+	TMPHexEditorEx *m_HexEditor;
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall actOpenFileExecute(TObject *Sender);
 	void __fastcall actInsertModeExecute(TObject *Sender);
@@ -237,6 +238,8 @@ __published:
           TShiftState Shift);
 	void __fastcall actOpenListFromTxtExecute(TObject *Sender);
     void __fastcall FormActivate(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
+
 
 
 private:
@@ -310,7 +313,11 @@ public:
 	void			DoBringToFront();
 	void			DoSetTabCaption();
 	void			LoadFromFile(String fileName);
-    void            SetPlugins(AList<tagExePlugins> *   plugins);
+	void            SetPlugins(AList<tagExePlugins> *   plugins);
+	void __fastcall WmDropFiles(TWMDropFiles& Message);
+  BEGIN_MESSAGE_MAP
+    MESSAGE_HANDLER(WM_DROPFILES, TWMDropFiles, WmDropFiles)
+  END_MESSAGE_MAP(TForm)
 };
 //----------------------------------------------------------------------------
 #endif

@@ -5,7 +5,6 @@
 
 #include "SPCommon.h"
 #include "KOEItlbm.h"
-#include "wylocal.h"
 
 //---------------------------------------------------------------------------
 
@@ -20,11 +19,15 @@ static		IParseEngine	*	gParseEngine = NULL;
 static		int		   	gKey = 0;
 static		int			gUseGlobalKey = 0;
 static		int			gParseAsHex = 0;
-static      TConfig     m_Config;
+static      TMemIniFile     *m_Config = NULL;
 
-TConfig         *       GetConfig()
+TMemIniFile         *       GetConfig()
 {
-    return  &m_Config;
+	if (m_Config == NULL)
+	{
+		m_Config = new TMemIniFile("");
+	}
+    return  m_Config;
 }
 
 void		SetAppPath(String appPath)
@@ -120,7 +123,8 @@ String		GetLangText(char *lpData, int len)
 		return String(lpData, len);
 	else if(gLangModule == lmBIG5)
 	{
-		return	Big2GBK(String(lpData, len));
+//		return	Big2GBK(String(lpData, len));
+		return "";
 	}
 	else if(gLangModule == lmUTF8)
 	{

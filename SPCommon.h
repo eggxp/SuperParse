@@ -6,10 +6,10 @@
 #include <vcl.h>
 #include <ComCtrls.hpp>
 #include <StrUtils.hpp>
+#include <IniFiles.hpp>
 #include "AList.h"
 #include "CommFunc.h"
 #include "IParseEngine.h"
-#include "WyConfig.h"
 
 #define     SETUP_INI_FILE      GetAppPath() + "LocalConfig.ini"
 
@@ -45,6 +45,6 @@ void				SetParseAsHex(int isOK);
 int					GetParseAsHex();
 
 
-TConfig     *       GetConfig();
+TMemIniFile     *       GetConfig();
 
 #endif

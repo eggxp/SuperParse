@@ -17,6 +17,7 @@
 //---------------------------------------------------------------------
 #pragma link "cspin"
 #pragma link "dcrHexEditor"
+#pragma link "dcrHexEditorEx"
 #pragma resource "*.dfm"
 
 #define	GRID_FIXED	2
@@ -1663,3 +1664,29 @@ void __fastcall TMDIChild::FormActivate(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+
+void __fastcall TMDIChild::FormCreate(TObject *Sender)
+{
+	DragAcceptFiles(this->Handle, TRUE);
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TMDIChild::WmDropFiles(TWMDropFiles& Message)
+{
+	TCHAR buff[MAX_PATH];
+	HDROP hDrop = (HDROP)Message.Drop;
+	int numFiles = DragQueryFile(hDrop, -1, NULL, NULL);
+	if (numFiles > 1)
+	{
+		// 只接受一个
+		numFiles = 1;
+	}
+	for (int i=0;i < numFiles;i++) {
+		DragQueryFile(hDrop, i, buff, sizeof(buff));
+		// process the file in 'buff'
+		m_HexEditor->LoadFromFile(buff);
+	}
+	DragFinish(hDrop);
+}

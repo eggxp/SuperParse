@@ -92,8 +92,6 @@ object MainForm: TMainForm
         Left = 0
         Top = 0
         Caption = 'List'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Panel2: TPanel
           Left = 0
           Top = 0

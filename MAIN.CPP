@@ -24,8 +24,9 @@ TMainForm *MainForm;
 __fastcall TMainForm::TMainForm(TComponent *Owner)
 	: TForm(Owner)
 {
+	m_IsCreatingWnd = false;
 	SetAppPath(ExtractFilePath(Application->ExeName));
-	SetLangModule(lmBIG5);
+	SetLangModule(lmGB);
 
 	m_ReOpenList = new TStringList;
 
@@ -35,9 +36,10 @@ __fastcall TMainForm::TMainForm(TComponent *Owner)
 
 void __fastcall TMainForm::CreateMDIChild(WorkSpace	*	workSpace)
 {
+	m_IsCreatingWnd = true;
 	SetErrorOutPut(StatusBar, LogFrm->memLog);
 	
-	TMDIChild *Child;
+	TMDIChild *Child = NULL;
 
 	//--- create a new MDI child window ----
 	Child = new TMDIChild(Application);
@@ -47,13 +49,14 @@ void __fastcall TMainForm::CreateMDIChild(WorkSpace	*	workSpace)
 	Child->RefreshWorkSpaceReq = RefreshWorkSpace;
     Child->SetPlugins(&m_ExePlugins);
 	TabSet1->Tabs->AddObject(Child->Caption,Child);
-	TabSet1->TabIndex = TabSet1->Tabs->Count-1;
 	Child->MainTabSet = TabSet1;
 	TabSet1->Repaint();
-
+	int tab_index = TabSet1->Tabs->Count-1;
+	TabSet1->TabIndex = tab_index;
 	SearchFilesFrm->LoadFile = LoadSearchFile;
 
-    ApplyWndConfig(Child);
+	ApplyWndConfig(Child);
+	m_IsCreatingWnd = false;
 }
 
 //---------------------------------------------------------------------------
@@ -160,7 +163,10 @@ void __fastcall TMainForm::TabSet1Change(TObject *Sender, int NewTab,
 	 if (ChildForm)
 	 {
 	   ChildForm->BringToFront();
-	   GetWorkSpaceManager()->SetWorkSpaceSelect(ChildForm->GetWorkSpace());
+	   if (!m_IsCreatingWnd)
+	   {
+		   GetWorkSpaceManager()->SetWorkSpaceSelect(ChildForm->GetWorkSpace());
+	   }
 	 }	
 }
 //---------------------------------------------------------------------------
@@ -639,40 +645,40 @@ void __fastcall TMainForm::actDebugExecute(TObject *Sender)
 void __fastcall TMainForm::actOpenSetupExecute(TObject *Sender)
 {
     
-    GetConfig()->Value2GUI();
-    if(ConfigFrm->ShowModal())
-    {
-        GetConfig()->GUI2Value();
-        ApplyConfig();
-    }
+//    GetConfig()->Value2GUI();
+//    if(ConfigFrm->ShowModal())
+//    {
+//        GetConfig()->GUI2Value();
+//        ApplyConfig();
+//    }
 }
 //---------------------------------------------------------------------------
 
 
 void                    TMainForm::ApplyConfig()
 {                  
-    GetConfig()->SaveToFile(SETUP_INI_FILE);
-    if((bool)GetConfig()->GetValue("cbUseDefSetup") == false)
-        return;        
-    TMDIChild	*	curChild;
-
-    for(int i=0; i<this->MDIChildCount; i++)
-    {
-        curChild = (TMDIChild	*)this->MDIChildren[i];
-        ApplyWndConfig(curChild);
-    }
-
-    SourceEditFrm->memSrcFile->Font->Name = GetConfig()->GetValue("edtCharset");
-    SourceEditFrm->memSrcFile->Font->Size = GetConfig()->GetValue("edtCharsetSize");
+//    GetConfig()->SaveToFile(SETUP_INI_FILE);
+//    if((bool)GetConfig()->GetValue("cbUseDefSetup") == false)
+//        return;
+//    TMDIChild	*	curChild;
+//
+//    for(int i=0; i<this->MDIChildCount; i++)
+//    {
+//        curChild = (TMDIChild	*)this->MDIChildren[i];
+//        ApplyWndConfig(curChild);
+//    }
+//
+//    SourceEditFrm->memSrcFile->Font->Name = GetConfig()->GetValue("edtCharset");
+//    SourceEditFrm->memSrcFile->Font->Size = GetConfig()->GetValue("edtCharsetSize");
 }
 
 void                    TMainForm::ApplyWndConfig(TMDIChild * curChild)
 {
-    if((bool)GetConfig()->GetValue("cbUseDefSetup") == false)
-        return;
-        
-	curChild->m_HexEditor->Font->Name = GetConfig()->GetValue("edtCharset");
-	curChild->m_HexEditor->Font->Size = GetConfig()->GetValue("edtCharsetSize");
+//    if((bool)GetConfig()->GetValue("cbUseDefSetup") == false)
+//        return;
+//
+//	curChild->m_HexEditor->Font->Name = GetConfig()->GetValue("edtCharset");
+//	curChild->m_HexEditor->Font->Size = GetConfig()->GetValue("edtCharsetSize");
 }
 
 void __fastcall TMainForm::actSetupExecute(TObject *Sender)
@@ -686,5 +692,6 @@ void __fastcall TMainForm::actOutputReadWriteAllExecute(TObject *Sender)
     OutputSrc(gAllReadWriteSrc);    
 }
 //---------------------------------------------------------------------------
+
 
 

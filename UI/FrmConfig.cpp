@@ -20,14 +20,14 @@ __fastcall TConfigFrm::TConfigFrm(TComponent* Owner)
 void __fastcall TConfigFrm::FormCreate(TObject *Sender)
 {
     //³õÊ¼»¯ÅäÖÃ
-    GetConfig()->SetRecordName("Charset");
-    GetConfig()->AddOptionRecord(edtCharset);
-    GetConfig()->AddOptionRecord(edtCharsetSize);
-	GetConfig()->AddOptionRecord(cbUseDefSetup);
-
-    GetConfig()->LoadFromFile(SETUP_INI_FILE, "Charset");
-
-    GetConfig()->Value2GUI();
+//    GetConfig()->SetRecordName("Charset");
+//    GetConfig()->AddOptionRecord(edtCharset);
+//    GetConfig()->AddOptionRecord(edtCharsetSize);
+//	GetConfig()->AddOptionRecord(cbUseDefSetup);
+//
+//    GetConfig()->LoadFromFile(SETUP_INI_FILE, "Charset");
+//
+//    GetConfig()->Value2GUI();
 
     MainForm->ApplyConfig();
 }

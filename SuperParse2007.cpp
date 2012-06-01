@@ -23,7 +23,7 @@ USEFORM("UI\FrmConfig.cpp", ConfigFrm);
 USEFORM("UI\FrmGoTo.cpp", GoToFrm);
 USEFORM("UI\FrmEditFileDescribe.cpp", EditFileDescribeFrm);
 //---------------------------------------------------------------------------
-WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
 	try
 	{
