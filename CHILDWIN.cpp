@@ -338,7 +338,8 @@ void			TMDIChild::ParseData(bool gotoPos)
 		}
 		else
 		{
-			GotoPosition(m_HexEditor->SelStart);
+			if(m_HexEditor->SelStart - 1 >= 0)
+				GotoPosition(m_HexEditor->SelStart - 1);
 		}
     }
 }
