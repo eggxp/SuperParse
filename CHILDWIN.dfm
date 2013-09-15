@@ -77,10 +77,6 @@ object MDIChild: TMDIChild
       TabOrder = 1
       object TabSheet1: TTabSheet
         Caption = #35299#26512#27169#24335
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Splitter5: TSplitter
           Left = 625
           Top = 0
@@ -613,7 +609,7 @@ object MDIChild: TMDIChild
     Left = 688
     Top = 160
     Bitmap = {
-      494C010119001D00580020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010119001D00640020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000080000000E0000000010020000000000000C0
       010000000000000000000000000000000000000000000000000000000000BDBD
       BD00CECECE00525252008C8C8C008484840073737300737373006B6B6B006B6B
@@ -4318,7 +4314,8 @@ object MDIChild: TMDIChild
   end
   object pmLanguage: TPopupMenu
     OnPopup = pmLanguagePopup
-    Left = 472
+    Left = 504
+    Top = 40
     object N2: TMenuItem
       Action = actSetToBIG5
     end

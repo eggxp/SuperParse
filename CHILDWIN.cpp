@@ -1322,7 +1322,7 @@ void __fastcall TMDIChild::lvWorkSpaceClick(TObject *Sender)
 	LoadCurWork();
 	if(selStart < m_HexEditor->DataSize)
 	{
-		m_HexEditor->SelStart = selStart;
+		m_HexEditor->SelStart = selStart+1;
 		ParseData();
 	}
 }

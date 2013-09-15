@@ -1,0 +1,27 @@
+#ClassRep#
+if OBJECT_ID ('<%StoreProcName%>_QueryAll', 'p') IS NOT NULL 
+DROP PROCEDURE <%StoreProcName%>_QueryAll
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE     PROCEDURE <%StoreProcName%>_QueryAll
+AS
+BEGIN
+
+SET NOCOUNT ON
+    SELECT * FROM <%ClassName%>
+
+SET NOCOUNT OFF
+END
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+#ClassRepEnd#
