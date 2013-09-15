@@ -1,51 +1,47 @@
 <%FileComment%>
 #ClassRep#
 <%ClassComment%>
-struct	<%ClassName%>
+struct  <%ClassName%>
 {
-	#MemberRep#
-	<%MemberReadDataType%>		<%MemberReadDataName%>;		<%MemberComment%>
-	#MemberRepEnd#
-	<%ClassName%>()
-	{
-		Clear();
-		<%SetHeadStr%>
-	}
-	int				GetLength()
-    {
+  #MemberRep#
+  <%MemberReadDataType%> <%MemberReadDataName%>; <%MemberComment%>
+  #MemberRepEnd#
+  <%ClassName%>() {
+    Clear();
+    <%SetHeadStr%>
+  }
+  int GetLength() {
     #DynamicClass#
-        int length = 0;
+    int length = 0;
     #MemberRep#
-        <%MemberGetLengthFunc%>
+    <%MemberGetLengthFunc%>
     #MemberRepEnd#
-        return	length;
+    return  length;
     #DynamicClassElse#
-        return sizeof(<%ClassName%>);
+    return sizeof(<%ClassName%>);
     #DynamicClassEnd#
-    }
-    char *				GetBuffer(int Key=0)
-    {
-        #DynamicClass#
-        data.SetLength(GetLength());
-        ZeroMemory(data.c_str(), data.Length());
-        int pos = 0;
+  }
+  char *GetBuffer(int Key=0) {
+    #DynamicClass#
+    data.SetLength(GetLength());
+    ZeroMemory(data.c_str(), data.Length());
+    int pos = 0;
     #MemberRep#
-        <%MemberWriteBufferFunc%>
+    <%MemberWriteBufferFunc%>
     #MemberRepEnd#
-        return data.c_str();
-        #DynamicClassElse#
-        return    (char *)this;
-        #DynamicClassEnd#
-    }
-	void                            Clear()
-	{
-	#DynamicClass#
-	#MemberRep#
-		<%MemberClearFunc%>
-	#MemberRepEnd#
-	#DynamicClassElse#
-		memset(this, 0, sizeof(*this));
-	#DynamicClassEnd#
-	}
+    return data.c_str();
+    #DynamicClassElse#
+    return    (char *)this;
+    #DynamicClassEnd#
+  }
+  void                            Clear() {
+    #DynamicClass#
+    #MemberRep#
+    <%MemberClearFunc%>
+    #MemberRepEnd#
+    #DynamicClassElse#
+    memset(this, 0, sizeof(*this));
+    #DynamicClassEnd#
+  }
 };
 #ClassRepEnd#

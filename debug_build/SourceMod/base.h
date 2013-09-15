@@ -1,10 +1,10 @@
 <%FileComment%>
 #ClassRep#
 <%ClassComment%>
-struct	<%ClassName%>
+struct  <%ClassName%>
 {
-	#MemberRep#
-	<%MemberType%>		<%MemberOrigFullName%>;		<%MemberComment%>
-	#MemberRepEnd#
+  #MemberRep#
+  <%MemberType%> <%MemberName%>; <%MemberComment%>
+  #MemberRepEnd#
 };
 #ClassRepEnd#

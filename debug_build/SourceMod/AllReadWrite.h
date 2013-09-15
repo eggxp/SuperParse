@@ -3,74 +3,67 @@
 <%FileComment%>
 #ClassRep#
 <%ClassComment%>
-struct	<%ClassName%>
+struct  <%ClassName%>
 {
-    #MemberRep#
-    <%MemberReadDataType%>		<%MemberReadDataName%>;		<%MemberComment%>
-    #MemberRepEnd#
-    #DynamicClass#
-    String                      data;
-    #DynamicClassElse#
-    #DynamicClassEnd#
-    <%ClassName%>()
-    {
-        Clear();
-        <%SetHeadStr%>
-    }
-    int				ReadData(char *_lpData, int _Len = 0, int Key=0)
-    {
-        Clear();
-        int pos = 0;
+  #MemberRep#
+  <%MemberReadDataType%> <%MemberReadDataName%>; <%MemberComment%>
+  #MemberRepEnd#
+  #DynamicClass#
+  String data;
+  #DynamicClassElse#
+  #DynamicClassEnd#
+  <%ClassName%>() {
+    Clear();
+    <%SetHeadStr%>
+  }
+  int ReadData(char *_lpData, int _Len = 0, int Key=0) {
+    Clear();
+    int pos = 0;
     #DynamicClass#
     #MemberRep#
-        <%MemberReadDataFunc%>
+    <%MemberReadDataFunc%>
     #MemberRepEnd#
     #DynamicClassElse#
-        memcpy(this, _lpData, sizeof(*this));
-        pos += sizeof(*this);
+    memcpy(this, _lpData, sizeof(*this));
+    pos += sizeof(*this);
     #DynamicClassEnd#
-	
-        if(_Len != 0 && pos != _Len)
-            GetLog()->Warn(FormatStr("Error in <%ClassName%> : %s ", BinToStr(_lpData, _Len)));
-        return pos;
-    }
-    void                            Clear()
-    {
+    if(_Len != 0 && pos != _Len)
+      GetLog()->Warn(FormatStr("Error in <%ClassName%> : %s ", BinToStr(_lpData, _Len)));
+    return pos;
+  }
+  void Clear() {
     #DynamicClass#
     #MemberRep#
-        <%MemberClearFunc%>
+    <%MemberClearFunc%>
     #MemberRepEnd#
     #DynamicClassElse#
-        memset(this, 0, sizeof(*this));
+    memset(this, 0, sizeof(*this));
     #DynamicClassEnd#
-    }
-    int				GetLength()
-    {
+  }
+  int GetLength() {
     #DynamicClass#
-        int length = 0;
+    int length = 0;
     #MemberRep#
-        <%MemberGetLengthFunc%>
+    <%MemberGetLengthFunc%>
     #MemberRepEnd#
-        return	length;
+    return  length;
     #DynamicClassElse#
-        return sizeof(<%ClassName%>);
+    return sizeof(<%ClassName%>);
     #DynamicClassEnd#
-    }
-    String				GetBuffer(int Key=0)
-    {
-        String data;
-        data.SetLength(GetLength());
-        ZeroMemory(data.c_str(), data.Length());
-        int pos = 0;
+  }
+  String GetBuffer(int Key=0) {
+    String data;
+    data.SetLength(GetLength());
+    ZeroMemory(data.c_str(), data.Length());
+    int pos = 0;
     #DynamicClass#
     #MemberRep#
-        <%MemberWriteBufferFunc%>
+    <%MemberWriteBufferFunc%>
     #MemberRepEnd#
     #DynamicClassElse#
-        WriteBuf(data.c_str(), pos, this, GetLength());
+    WriteBuf(data.c_str(), pos, this, GetLength());
     #DynamicClassEnd#
-        return data;
-    }
-    
+    return data;
+  }
 };
 #ClassRepEnd#
